@@ -3,7 +3,7 @@ import ReactDOM from "react-dom";
 import "./index.css";
 import ComicGen from "./ComicGen";
 import * as serviceWorker from "./serviceWorker";
-import { BrowserRouter } from "./react-router-dom";
+import { BrowserRouter } from "react-router-dom";
 import { Provider } from "react-redux";
 import store from "./redux/store";
 
