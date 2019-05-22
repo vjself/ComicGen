@@ -3,7 +3,8 @@ import {
   setTitle,
   setText,
   balloonToggle,
-  setBackground
+  setBackground,
+  setChar
 } from "../../redux/userToolsReducer";
 import { connect } from "react-redux";
 
@@ -37,7 +38,13 @@ class ToolBox extends Component {
             placeholder="Text..."
             type="text"
             value={this.props.balloonInput}
-            onChange={e => [this.props.setText(e.target.value)]}
+            onChange={e => this.props.setText(e.target.value)}
+          />
+          <input
+            placeholder="Character..."
+            type="text"
+            value={this.props.char}
+            onChange={e => this.props.setText(e.target.value)}
           />
           <input
             placeholder="Background..."
@@ -47,6 +54,7 @@ class ToolBox extends Component {
               this.props.setBackground(e.target.value);
             }}
           />
+          <button onChange={this.props.setUserComic}>Confirm?</button>
         </div>
       </div>
     );
@@ -60,7 +68,8 @@ const mapStateToProps = reduxState => {
     titleInput: reduxState.titleInput,
     balloonInput: reduxState.balloonInput,
     panelBackground: reduxState.panelBackground,
-    balloonToggle: reduxState.balloonToggle
+    balloonToggle: reduxState.balloonToggle,
+    char:reduxState.char
   };
 };
 
@@ -68,7 +77,8 @@ const mapDispatchToProps = {
   setTitle,
   setText,
   balloonToggle,
-  setBackground
+  setBackground,
+  setChar
 };
 
 export default connect(

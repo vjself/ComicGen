@@ -4,15 +4,15 @@ import "./index.css";
 import ComicGen from "./ComicGen";
 import * as serviceWorker from "./serviceWorker";
 import { BrowserRouter } from "react-router-dom";
+import routes from './routes';
 import { Provider } from "react-redux";
 import store from "./redux/store";
-import Comic from './components/Comic.js'
+import Comic from './components/Comic/Comic.js'
 
 ReactDOM.render(
   <Provider store={store}>
     <BrowserRouter>
       <ComicGen />
-      <Comic />
     </BrowserRouter>
   </Provider>,
   document.getElementById("root")
