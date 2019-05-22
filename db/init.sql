@@ -1,3 +1,4 @@
+drop table if exists comics;
 drop table if exists users;
 create table users(
     id serial primary key,
@@ -8,7 +9,6 @@ create table users(
     l_name varchar(64) not null,
     social integer,
     mom_m varchar(64) not null,
-    about text,
     age integer,
     gender varchar(1),
     profile_pic text

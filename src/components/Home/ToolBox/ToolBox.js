@@ -4,7 +4,7 @@ import {
   setText,
   balloonToggle,
   setBackground
-} from "../../redux/userToolsReducer";
+} from "../../../redux/userToolsReducer";
 import { connect } from "react-redux";
 
 class ToolBox extends Component {
