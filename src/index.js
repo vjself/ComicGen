@@ -7,10 +7,7 @@ import { BrowserRouter } from "react-router-dom";
 import routes from './routes';
 import { Provider } from "react-redux";
 import store from "./redux/store";
-<<<<<<< HEAD
-=======
-import Comic from './components/Comic/Comic.js'
->>>>>>> wired-display
+
 
 ReactDOM.render(
   <Provider store={store}>
