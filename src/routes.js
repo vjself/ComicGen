@@ -1,8 +1,8 @@
 import React from "react";
 import { Switch, Route } from "react-router-dom";
-import ToolBox from "./components/ToolBox/ToolBox";
+import Home from "./components/Home/Home";
 export default (
   <Switch>
-    <Route exact path="/" component={ToolBox} />
+    <Route exact path="/" component={Home} />
   </Switch>
 );
