@@ -2,109 +2,59 @@ import React, { Component } from "react";
 import {
   setTitle,
   setText,
-  balloonToggleHandle,
+  balloonToggle,
   setBackground,
-  setChar,
-  setUserComic
+  setChar
 } from "../../../redux/userToolsReducer";
 import { connect } from "react-redux";
 
 class ToolBox extends Component {
   constructor(props) {
     super(props);
-    this.state = {
-      numOptions: []
-    };
+    this.state = {};
   }
 
   render() {
-    const {
-      titleInput,
-      balloonInput,
-      charInput,
-      panelBackground,
-      balloonToggle
-    } = this.props;
-    const { numOptions } = this.state;
-    let chosenPanelNum = function() {
-      let arr = [];
-      for (let i = 1; i <= numOptions; i++) {
-        arr.push(i);
-      }
-      return arr;
-    };
-    let mofo = chosenPanelNum();
-    console.log(this.props.panels);
+    console.log(this.props.titleInput);
     return (
       <div>
         ToolBox
         <div>
-          <div className="selectors">
-            <input
-              maxLength="1"
-              type="text"
-              onChange={e => {
-                e.target.value.length <= 1 &&
-                  this.setState({
-                    numOptions: e.target.value
-                  });
-              }}
-            />
-          </div>
-          <div>
-            Panel Select:
-            <select>
-              {mofo.map(element => {
-                return <option name={element}>{element}</option>;
-              })}
-            </select>
-          </div>
-          <div>
-            <input
-              placeholder="Title..."
-              type="text"
-              value={titleInput}
-              onChange={e => {
-                this.props.setTitle(e.target.value);
-              }}
-            />
-          </div>
-          <div>
-            <input
-              placeholder="Text..."
-              type="text"
-              value={balloonInput}
-              onChange={e => this.props.setText(e.target.value)}
-            />
-          </div>
-          <div>
-            <input
-              placeholder="Character..."
-              type="text"
-              value={charInput}
-              onChange={e => this.props.setChar(e.target.value)}
-            />
-          </div>
-          <div>
-            <input
-              placeholder="Background..."
-              type="text"
-              value={panelBackground}
-              onChange={e => {
-                this.props.setBackground(e.target.value);
-              }}
-            />
-          </div>
-          <div>
-            <button
-              onClick={() => this.props.balloonToggleHandle(!balloonToggle)}
-            >
-              Balloon?
-            </button>
-          </div>
-          <div>
-            <button onClick={this.props.setUserComic}>Confirm</button>
-          </div>
+          <select>
+            <option>1</option>
+            <option>2</option>
+            <option>3</option>
+            <option>4</option>
+          </select>
+          <input
+            placeholder="Title..."
+            type="text"
+            value={this.props.titleInput}
+            onChange={e => {
+              this.props.setTitle(e.target.value);
+            }}
+          />
+          <input
+            placeholder="Text..."
+            type="text"
+            value={this.props.balloonInput}
+            onChange={e => this.props.setText(e.target.value)}
+          />
+          <input
+            placeholder="Character..."
+            type="text"
+            value={this.props.char}
+            onChange={e => this.props.setText(e.target.value)}
+          />
+          <input
+            placeholder="Background..."
+            type="text"
+            value={this.props.panelBackground}
+            onChange={e => {
+              this.props.setBackground(e.target.value);
+            }}
+          />
+          <button onChange={this.props.setUserComic}>Confirm?</button>
         </div>
       </div>
     );
@@ -119,18 +69,16 @@ const mapStateToProps = reduxState => {
     balloonInput: reduxState.balloonInput,
     panelBackground: reduxState.panelBackground,
     balloonToggle: reduxState.balloonToggle,
-    setChar: reduxState.setChar,
-    panels: reduxState.panels
+    char:reduxState.char
   };
 };
 
 const mapDispatchToProps = {
   setTitle,
   setText,
-  balloonToggleHandle,
+  balloonToggle,
   setBackground,
-  setChar,
-  setUserComic
+  setChar
 };
 
 export default connect(

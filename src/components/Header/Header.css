@@ -6,3 +6,27 @@
   height: 100px;
   background-color: blue;
 }
+nav{
+    height: 50px;
+    margin-bottom: 5px;
+    background-color: darkcyan
+}
+
+.home{
+    display: flex;
+    background-color: bisque;
+}
+
+.feed{
+background-color: darkgrey;
+}
+
+.register{
+background-color: chocolate
+}
+
+logo {
+  background-color: aqua;  
+}
+
+/* @media() */

@@ -1,0 +1,1 @@
+select * from comics where users_id = $1;

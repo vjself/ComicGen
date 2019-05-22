@@ -1,0 +1,1 @@
+select * from comics order by comics_id desc;
