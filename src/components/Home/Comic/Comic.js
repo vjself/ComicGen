@@ -10,19 +10,19 @@ class Comic extends Component {
   }
 
   render() {
-    let panelInstance = this.props.panels.map((panel, index) => {
-      return (
-        <Panel key={index} background={panel.panelBackground}>
-          <Character image={panel.char}>
-            <Balloon text={panel.baloonText} />
-          </Character>
-        </Panel>
-      );
-    });
+    // let panelInstance = this.props.panels.map((panel, index) => {
+    //   return (
+    //     <Panel key={index} background={panel.panelBackground}>
+    //       <Character image={panel.char}>
+    //         <Balloon text={panel.baloonText} />
+    //       </Character>
+    //     </Panel>
+    //   );
+    // });
     return (
       <div className="comic-container">
         <Strip title={"Title"} column="2">
-          {panelInstance}
+          {/* {panelInstance} */}
         </Strip>
       </div>
     );
