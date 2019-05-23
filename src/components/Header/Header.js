@@ -32,6 +32,8 @@ export default class Header extends Component {
         </div>
       <div className="feed">
         <NavLink to ="/feed"> Community Feed </NavLink> </div>
+      <div className="myprofile">
+        <NavLink to ="/myprofile"> My Profile </NavLink> </div>
       <nav>
         <ul>
           {!user ? ( 
