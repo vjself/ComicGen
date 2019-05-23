@@ -59,7 +59,7 @@ changeHandler = (name, value) => {
 render(){
     console.log(this.state.email)
     const { email, username, password, f_name, l_name, social, mom_m, age, gender, profile_pic} = this.state;
-    const { user } = this.props;
+    // const { user } = this.props;
     return (
     <div>
         <h1>Register</h1>
