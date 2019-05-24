@@ -1,11 +1,12 @@
 const initialState = {
+  panelNumber: 0,
   titleInput: "",
   balloonInput: "",
   panelBackground: "",
   balloonToggle: true,
   char: "",
   panels: [],
-  userComic: {}
+  userComic: []
 };
 
 const SET_TITLE = "SET_TITLE";
@@ -13,7 +14,11 @@ const SET_TEXT = "SET_TEXT";
 const BALLOON_TOGGLE_HANDLE = "BALLOON_TOGGLE";
 const SET_BG = "SET_BG";
 const SET_CHAR = "SET_CHAR";
-const SET_USER_COMIC = "SET_USER_COMIC";
+const SAVE_USER_PANEL = "SAVE_USER_PANEL";
+const SET_PANELS = "SET_PANELS";
+const SET_PANEL_NUMBER = "SET_PANEL_NUMBER";
+const RESET_FIELDS = "RESET_FIELDS";
+const SAVE_USER_COMIC = "SAVE_USER_COMIC";
 
 export default function userToolsReducer(state = initialState, action) {
   let { payload } = action;
@@ -28,8 +33,44 @@ export default function userToolsReducer(state = initialState, action) {
       return { ...state, balloonToggle: payload };
     case SET_CHAR:
       return { ...state, char: payload };
-    case SET_USER_COMIC:
-      return { ...state, userComic: payload };
+    case SET_PANEL_NUMBER:
+      return { ...state, panelNumber: payload };
+    case SAVE_USER_COMIC:
+      let comic = [...state.panels];
+      return { ...state, userComic: comic };
+    case RESET_FIELDS:
+      return {
+        ...state,
+        titleInput: "",
+        panelBackground: "",
+        char: "",
+        balloonInput: ""
+      };
+    case SAVE_USER_PANEL:
+      let copy = [...state.panels];
+      let panel = {
+        balloontext: state.balloonInput,
+        bg: state.panelBackground,
+        char: state.char,
+        baloonBool: state.balloonToggle
+      };
+      copy[state.panelNumber] = panel;
+      return { ...state, panels: copy };
+    case SET_PANELS:
+      let panelCreator = function() {
+        let arr = [];
+        for (let i = 0; i < payload; i++) {
+          arr.push({
+            balloonText: "",
+            bg: "",
+            char: "",
+            balloonBool: true
+          });
+        }
+        return arr;
+      };
+      let done = panelCreator();
+      return { ...state, panels: done };
     default:
       return state;
   }
@@ -45,6 +86,12 @@ export function setText(text) {
   return {
     type: SET_TEXT,
     payload: text
+  };
+}
+export function setPanels(num) {
+  return {
+    type: SET_PANELS,
+    payload: num
   };
 }
 export function setChar(text) {
@@ -71,9 +118,24 @@ export function setBackground(bg) {
     payload: bg
   };
 }
-export function setUserComic(comic) {
+export function saveUserPanel() {
   return {
-    type: SET_USER_COMIC,
-    payload: comic
+    type: SAVE_USER_PANEL
+  };
+}
+export function setPanelNumber(id) {
+  return {
+    type: SET_PANEL_NUMBER,
+    payload: id
+  };
+}
+export function resetFields() {
+  return {
+    type: RESET_FIELDS
+  };
+}
+export function saveUserComic() {
+  return {
+    type: SAVE_USER_COMIC
   };
 }

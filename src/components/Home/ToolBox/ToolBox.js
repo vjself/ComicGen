@@ -5,36 +5,35 @@ import {
   balloonToggleHandle,
   setBackground,
   setChar,
-  setUserComic
+  setPanelNumber,
+  setPanels,
+  saveUserPanel,
+  resetFields,
+  saveUserComic
 } from "../../../redux/userToolsReducer";
 import { connect } from "react-redux";
 
 class ToolBox extends Component {
   constructor(props) {
     super(props);
-    this.state = {
-      numOptions: []
-    };
+    this.state = {};
   }
+
+  fieldController = () => {
+    this.props.saveUserPanel();
+    this.props.resetFields();
+  };
 
   render() {
     const {
       titleInput,
       balloonInput,
-      charInput,
+      char,
       panelBackground,
-      balloonToggle
+      balloonToggle,
+      setPanels
     } = this.props;
-    const { numOptions } = this.state;
-    let chosenPanelNum = function() {
-      let arr = [];
-      for (let i = 1; i <= numOptions; i++) {
-        arr.push(i);
-      }
-      return arr;
-    };
-    let mofo = chosenPanelNum();
-    console.log(this.props.panels);
+
     return (
       <div>
         ToolBox
@@ -42,20 +41,19 @@ class ToolBox extends Component {
           <div className="selectors">
             <input
               maxLength="1"
+              placeholder="How many panels?"
               type="text"
               onChange={e => {
-                e.target.value.length <= 1 &&
-                  this.setState({
-                    numOptions: e.target.value
-                  });
+                e.target.value.length <= 1 && setPanels(e.target.value);
               }}
             />
           </div>
           <div>
             Panel Select:
             <select>
-              {mofo.map(element => {
-                return <option name={element}>{element}</option>;
+              {this.props.panels.map((e, i) => {
+                this.props.setPanelNumber(i);
+                return <option name={i}>{i}</option>;
               })}
             </select>
           </div>
@@ -81,7 +79,7 @@ class ToolBox extends Component {
             <input
               placeholder="Character..."
               type="text"
-              value={charInput}
+              value={char}
               onChange={e => this.props.setChar(e.target.value)}
             />
           </div>
@@ -95,15 +93,19 @@ class ToolBox extends Component {
               }}
             />
           </div>
-          <div>
+          <div className="balloon-toggle">
+            <h2>Balloon?</h2>
             <button
               onClick={() => this.props.balloonToggleHandle(!balloonToggle)}
             >
-              Balloon?
+              {this.props.balloonToggle === true ? "On" : "Off"}
             </button>
           </div>
           <div>
-            <button onClick={this.props.setUserComic}>Confirm</button>
+            <button onClick={this.fieldController}>Confirm</button>
+          </div>
+          <div>
+            <button onClick={this.props.saveUserComic}>SaveComic</button>
           </div>
         </div>
       </div>
@@ -113,14 +115,13 @@ class ToolBox extends Component {
 
 const mapStateToProps = reduxState => {
   return {
-    user: reduxState.user,
-    userComic: reduxState.userComic,
-    titleInput: reduxState.titleInput,
-    balloonInput: reduxState.balloonInput,
-    panelBackground: reduxState.panelBackground,
-    balloonToggle: reduxState.balloonToggle,
-    setChar: reduxState.setChar,
-    panels: reduxState.panels
+    user: reduxState.userToolsReducer.user,
+    titleInput: reduxState.userToolsReducer.titleInput,
+    balloonInput: reduxState.userToolsReducer.balloonInput,
+    panelBackground: reduxState.userToolsReducer.panelBackground,
+    balloonToggle: reduxState.userToolsReducer.balloonToggle,
+    char: reduxState.userToolsReducer.char,
+    panels: reduxState.userToolsReducer.panels
   };
 };
 
@@ -130,7 +131,11 @@ const mapDispatchToProps = {
   balloonToggleHandle,
   setBackground,
   setChar,
-  setUserComic
+  setPanelNumber,
+  setPanels,
+  saveUserPanel,
+  resetFields,
+  saveUserComic
 };
 
 export default connect(

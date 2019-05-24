@@ -4,10 +4,8 @@ import "./index.css";
 import ComicGen from "./ComicGen";
 import * as serviceWorker from "./serviceWorker";
 import { BrowserRouter } from "react-router-dom";
-import routes from './routes';
 import { Provider } from "react-redux";
 import store from "./redux/store";
-
 
 ReactDOM.render(
   <Provider store={store}>
