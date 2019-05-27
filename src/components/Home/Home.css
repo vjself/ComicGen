@@ -4,3 +4,16 @@
   align-items: center;
   width: 600px;
 }
+
+.home-cont {
+  text-align: center;
+}
+
+h3 {
+  line-height: 50px;
+  font-size: 32px;
+  padding: 20px;
+  text-decoration: underline;
+  color: rgba(0, 132, 255, 0.712);
+  text-shadow: 2px 1px 4px rgba(0, 0, 0, 0.438);
+}

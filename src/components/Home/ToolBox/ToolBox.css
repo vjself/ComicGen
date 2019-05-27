@@ -1,0 +1,103 @@
+.tool-box {
+  display: flex;
+  position: absolute;
+  left: 0;
+  border: 2px;
+  flex-direction: column;
+  text-align: center;
+  width: 350px;
+  padding: 10px;
+  box-shadow: 2px 1px 4px rgba(0, 0, 0, 0.438);
+  background: rgba(0, 195, 255, 0.144);
+  margin-left: 100px;
+}
+
+.dash-container {
+  display: flex;
+  flex-direction: row;
+  margin-left: 300px;
+}
+
+.tool-box input {
+  margin: 10px;
+  width: 75%;
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  border-bottom: 2px solid rgba(0, 0, 0, 0.438);
+  border-radius: 1px;
+  line-height: 30px;
+  background: transparent;
+  color: rgba(111, 202, 255, 0.884);
+  font-size: 20px;
+}
+.tool-box input::placeholder {
+  color: rgba(0, 162, 255, 0.712);
+  font-size: 20px;
+}
+
+.tool-box select {
+  margin: 10px;
+  width: 100%;
+}
+
+.panel-select {
+  position: relative;
+  /* transform: translate(-50%, -50%); */
+}
+
+.panel-select select {
+  background-color: rgba(0, 162, 255, 0.712);
+  color: white;
+  padding: 10px;
+  width: 250px;
+  border: none;
+  font-size: 20px;
+  box-shadow: 0 5px 25px rgba(0, 0, 0, 0.2);
+  appearance: button;
+  outline: none;
+}
+
+.panel-select::before {
+  width: 20%;
+  height: 100%;
+  text-align: center;
+  font-size: 28px;
+  line-height: 45px;
+  color: rgba(255, 255, 255, 0.5);
+  background-color: rgba(255, 255, 255, 0.1);
+  pointer-events: none;
+}
+
+.panel-select:hover::before {
+  color: rgba(255, 255, 255, 0.6);
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+.panel-select select option {
+  padding: 30px;
+}
+
+.confirm-btn > button,
+.save-btn > button {
+  padding: 20px;
+  font-size: 20px;
+  margin: 10px;
+  width: 50%;
+  height: 40px;
+}
+#c-btn:hover {
+  color: rgba(111, 202, 255, 0.884) !important;
+  border-radius: 50px;
+  border-color: rgba(111, 202, 255, 0.884) !important;
+  transition: all 0.3s ease 0s;
+}
+
+#c-btn {
+  background: transparent;
+  color: rgba(0, 162, 255, 0.712) !important;
+  text-transform: uppercase;
+  border: 2px solid rgba(0, 162, 255, 0.712) !important;
+  border-radius: 6px;
+  padding: 6px;
+}

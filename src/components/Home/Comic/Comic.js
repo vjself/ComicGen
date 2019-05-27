@@ -11,9 +11,7 @@ class Comic extends Component {
   }
 
   render() {
-    console.log(this.props);
     let panelInstance = this.props.userComic.map((panel, index) => {
-      console.log(panel);
       return (
         <Panel key={index} background={panel.bg}>
           <Character image={panel.char}>
@@ -24,17 +22,15 @@ class Comic extends Component {
     });
     return (
       <div className="comic-container">
-        <div />
-        <Strip title="" column="2">
-          {panelInstance}
-        </Strip>
+        {this.props.userComic.length > 0 && (
+          <Strip column="2">{panelInstance}</Strip>
+        )}
       </div>
     );
   }
 }
 
 const mapStateToProps = reduxState => {
-  console.log(reduxState);
   return {
     titleInput: reduxState.userToolsReducer.titleInput,
     userComic: reduxState.userToolsReducer.userComic

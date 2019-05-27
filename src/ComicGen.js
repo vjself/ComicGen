@@ -14,7 +14,7 @@ export default class ComicGen extends Component {
     return (
       <div className="App">
         <Header />
-        <div>{routes}</div>
+        {routes}
       </div>
     );
   }

@@ -54,7 +54,10 @@ export default function userToolsReducer(state = initialState, action) {
         char: state.char,
         baloonBool: state.balloonToggle
       };
-      copy[state.panelNumber] = panel;
+      console.log("Panel", panel);
+      console.log("panelNumber", state.panelNumber - 1);
+      copy[state.panelNumber - 1] = panel;
+      console.log("Copy", copy);
       return { ...state, panels: copy };
     case SET_PANELS:
       let panelCreator = function() {
