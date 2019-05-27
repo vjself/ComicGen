@@ -11,6 +11,7 @@ class Comic extends Component {
   }
 
   render() {
+
     let panelInstance = this.props.userComic.map((panel, index) => {
       return (
         <Panel key={index} background={panel.bg}>
@@ -25,6 +26,7 @@ class Comic extends Component {
         {this.props.userComic.length > 0 && (
           <Strip column="2">{panelInstance}</Strip>
         )}
+
       </div>
     );
   }

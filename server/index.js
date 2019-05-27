@@ -27,16 +27,15 @@ massive(CONNECTION_STRING).then(dbInstance => {
 })
 
 // users
-app.post("/api/signin",);
+app.post("/api/login", uC.login);
 app.post("/api/register", uC.register);
 app.post("/api/logout", (req, res) => {
     req.session.destroy();
     res.sendStatus(200);
 });
 
-
 app.get("/api/user", (req,res) => {
-    res.status(200).send(req.session.user)
+    res.status(200).send(req.session.user);
 });
 
 // comics
