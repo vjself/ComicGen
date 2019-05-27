@@ -1,0 +1,48 @@
+h1{
+    font-family: 'Oswald', sans-serif;
+    font-weight: bold;
+    font-stretch: semi-expanded;
+    font-size: 50px;
+    text-align: center;
+}
+
+h2{
+    font-family: 'Oswald', sans-serif;
+    font-stretch: semi-expanded;
+    font-size: 25px;
+    text-align: center;
+}
+
+.Comic-Creations{
+  text-align: center;
+}
+
+.Comic-Boxes{
+    border: 5px solid black;
+    border-style: solid;
+    padding: 5px;
+    text-align: center;
+}
+
+.flex-container{
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    margin: auto;
+    border: 3px solid black;
+    padding: 25px;
+    text-align: center;
+    height: 500px;
+    width: 500px;
+}
+
+.Comic-Boxes{
+    display: flex;
+    flex-direction: row;
+    height: auto;
+    width: auto;
+    border: 3px solid black;
+    padding: 25px;
+    text-align: center;
+
+}

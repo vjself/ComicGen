@@ -21,6 +21,7 @@ app.use(
             maxAge: 1000 * 60 * 60 * 24 *14
         }
     })
+
     );
     
     massive(CONNECTION_STRING).then(dbInstance => {
@@ -44,6 +45,7 @@ app.use(
     // comics
     app.get("/api/comics", cC.getAll)
     app.get("/api/community", cC.comicByUser)
+
 
     // cloudinary
 

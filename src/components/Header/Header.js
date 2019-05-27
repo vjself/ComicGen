@@ -1,9 +1,11 @@
 import React, { Component } from "react";
-import { NavLink } from "react-router-dom"
+
+import { NavLink, withRouter } from "react-router-dom"
 import "./Header.css"
 import{login, logout} from "../../redux/authReducer"
 import Axios from "axios";
 import {connect} from "react-redux" 
+
 
 class Header extends Component {
   constructor(props) {
@@ -11,7 +13,7 @@ class Header extends Component {
 
     this.state = {
       username: "",
-      password: "",
+      password: ""
     };
     this.login = this.login.bind(this)
     this.logout = this.logout.bind(this)
@@ -23,6 +25,7 @@ class Header extends Component {
   //   });
   //   // this.login();
   // }
+
 
   logout = () => {
     Axios.post("/api/logout").then(() => {
@@ -38,9 +41,11 @@ class Header extends Component {
     };
     Axios.post("/api/login", loginPayload).then(res => {
       console.log("logged in", res.data);
+      
       this.props.login(res.data);
-    })
-    // .catch(err => alert(err));
+      this.props.history.push('/myprofile')
+      
+    }).catch(err => alert("Please try logging in again.", err));
   }
   
   changeHandler = (name, value) => {
@@ -54,29 +59,34 @@ class Header extends Component {
     const { authReducer } = this.props;
     const { user } = authReducer
     console.log(this.props, "this.props")
+
     return (
       <div className= "header">
         <div className= "logo">logo</div>
+
         <div className="home">
-          <NavLink to="/" >
-            Home
-          </NavLink></div>
+          <NavLink to="/">Home</NavLink>
+        </div>
         <div className="register">
-          <NavLink to="/register" >
-            Register
-          </NavLink> 
+          <NavLink to="/register">Register</NavLink>
         </div>
         <div className="feed">
-          <NavLink to ="/feed"> Community Comics </NavLink> </div>
-        <nav >
-          <ul className="login">
-           {!user ? ( 
-           <li >
-             <input 
-              placeholder="username"
-              name="username"
-              value={username}
-              onChange={e =>
+          <NavLink to="/feed"> Community Feed </NavLink>{" "}
+        </div>
+      <div className="feed">
+        <NavLink to ="/feed"> Community Feed </NavLink> </div>
+      <div className="myprofile">
+        <NavLink to ="/myprofile"> My Profile </NavLink> </div>
+      <nav>
+        <ul className="login>
+          {!user ? ( 
+          <li>
+          <input
+          placeholder="username"
+          name="username"
+          value={username}
+          onChange={e =>
+
           this.changeHandler(e.target.name, e.target.value)
         }
         />
@@ -113,7 +123,8 @@ const mapDispatchToProps = {
   logout,
 };
 
-export default connect(
+export default withRouter(connect(
   mapStateToProps,
   mapDispatchToProps
-)(Header);
+)(Header));
+

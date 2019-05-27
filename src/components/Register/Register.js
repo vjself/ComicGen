@@ -1,72 +1,107 @@
-import React, { Component } from 'react';
-import axios from 'axios';
-import {register} from "../../redux/authReducer";
+import React, { Component } from "react";
+import axios from "axios";
+import { register } from "../../redux/authReducer";
 import "./register.css";
+
 import { connect } from 'react-redux';
+import userToolsReducer from '../../redux/userToolsReducer';
+
 
 class Register extends Component {
-    constructor(props){
-        super(props);
-        this.state = {
-            email: "",
-            username: "",
-            password: "",
-            f_name: "",
-            l_name: "",
-            social: "",
-            mom_m: "",
-            age: null,
-            gender: "",
-            profile_pic: "",
-        };
-        this.register = this.register.bind(this);
-    }
-
-    // componentDidMount(){
-    //     axios.get("/api/users").then(res => {
-    //         console.log(res)
-    //         this.props.register(res.data);
-    //     });
-    // }
-register(){
-    const loginPayload = {
-        email: this.state.email,
-        username: this.state.username,
-        password: this.state.password,
-        f_name: this.state.f_name,
-        l_name: this.state.l_name,
-        social: this.state.social,
-        mom_m: this.state.mom_m,
-        age: this.state.age,
-        gender: this.state.gender,
-        profile_pic: this.state.profile_pic
+  constructor(props) {
+    super(props);
+    this.state = {
+      email: "",
+      username: "",
+      password: "",
+      f_name: "",
+      l_name: "",
+      social: "",
+      mom_m: "",
+      age: null,
+      gender: "",
+      profile_pic: ""
     };
-    console.log('login payload -->', loginPayload)
+    this.register = this.register.bind(this);
+  }
+
+  // componentDidMount(){
+  //     axios.get("/api/users").then(res => {
+  //         console.log(res)
+  //         this.props.register(res.data);
+  //     });
+  // }
+  register() {
+    const loginPayload = {
+      email: this.state.email,
+      username: this.state.username,
+      password: this.state.password,
+      f_name: this.state.f_name,
+      l_name: this.state.l_name,
+      social: this.state.social,
+      mom_m: this.state.mom_m,
+      age: this.state.age,
+      gender: this.state.gender,
+      profile_pic: this.state.profile_pic
+    };
+    console.log("login payload -->", loginPayload);
     axios
-    .post("/api/register", loginPayload)
-    .then(res => {
-        console.log('front end reg res --> ', res.data)
+      .post("/api/register", loginPayload)
+      .then(res => {
+        console.log("front end reg res --> ", res.data);
         this.props.register(res.data);
-    })
-    .catch(err => alert(err));
+
+
+        console.log("this.props find user: ", this.props);
+        console.log("loginPayload.username: ", loginPayload.username)
+        console.log("loginPayload: ", loginPayload)
+        console.log("ressssss", res)
+        
+        this.props.history.push('/myprofile')  
+    }).catch(err => alert("User exists. Please log in"));
+
+   
+    
 }
 changeHandler = (name, value) => {
+
     this.setState({
-        [name]: value
+      [name]: value
     });
-}
+  };
+
+
+  render() {
+    console.log(this.state.email);
+    const {
+      email,
+      username,
+      password,
+      f_name,
+      l_name,
+      social,
+      mom_m,
+      age,
+      gender,
+      profile_pic
+    } = this.state;
+
 
 render(){
     console.log(this.state.email, "Pulling In Email")
     const { email, username, password, f_name, l_name, social, mom_m, age, gender, profile_pic} = this.state;
     const { user } = this.props;
+
     return (
-    <div>
+      <div>
         <h1>Register</h1>
+
         <div className="regisForm">
             <ul>
                 <li className= "register">
-                    <input
+                   
+                    <input 
+
                     placeholder = "email"
                     name = "email"
                     value={email}
@@ -156,19 +191,21 @@ render(){
 
 }
 
+
 }
 const mapStateToProps = reduxState => {
-
-    return {
-        user: reduxState.user
-    };
+  return {
+    user: reduxState.user
+  };
 };
 
 const mapDispatchToProps = {
+
     register: register,
+
 };
 
 export default connect(
-    mapStateToProps,
-    mapDispatchToProps
-    )(Register)
+  mapStateToProps,
+  mapDispatchToProps
+)(Register);
