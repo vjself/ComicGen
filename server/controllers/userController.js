@@ -7,7 +7,8 @@ module.exports = {
         let find_users = await db.find_users(username);
         console.log(find_users, "Finding USers")
         if(!find_users[0]){
-            res.status(200).send("Incorrect username, please try again. Turd")
+            console.log("it's hitting")
+            res.status(403).send("Incorrect username, please try again. Turd")
         }
         let result = await bcrypt.compare(password, find_users[0].password)
         console.log(password,"passsswwoorrddd")
@@ -16,7 +17,8 @@ module.exports = {
             req.session.user = {id: find_users[0].id, username: find_users[0].username};
             res.status(200).send(req.session.user);
         } else {
-            res.status(200).send("Incorrect email/password. Try again turd nugget.")
+            console.log("hitting the else")
+            res.status(403).send("Incorrect email/password. Try again turd nugget.")
         }
     },
 
@@ -27,7 +29,7 @@ module.exports = {
         db.find_users(email).then(users => {
             console.log(email,"--find email")
             if (users.length) {
-                res.status(200).send("That user already exists");
+                res.status(403).send("That user already exists");
             } else {
                 let saltRounds = 12;
                 bcrypt.genSalt(saltRounds).then(salt => {

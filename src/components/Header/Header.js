@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { NavLink } from "react-router-dom"
+import { NavLink, withRouter } from "react-router-dom"
 import "./Header.css"
 import{login, logout} from "../../redux/authReducer"
 import Axios from "axios";
@@ -38,9 +38,11 @@ class Header extends Component {
     };
     Axios.post("/api/login", loginPayload).then(res => {
       console.log("logged in", res.data);
+      
       this.props.login(res.data);
-    })
-    // .catch(err => alert(err));
+      this.props.history.push('/myprofile')
+      
+    }).catch(err => alert("Please try logging in again.", err));
   }
   
   changeHandler = (name, value) => {
@@ -68,6 +70,8 @@ class Header extends Component {
         </div>
       <div className="feed">
         <NavLink to ="/feed"> Community Feed </NavLink> </div>
+      <div className="myprofile">
+        <NavLink to ="/myprofile"> My Profile </NavLink> </div>
       <nav>
         <ul>
           {!user ? ( 
@@ -113,7 +117,7 @@ const mapDispatchToProps = {
   logout,
 };
 
-export default connect(
+export default withRouter(connect(
   mapStateToProps,
   mapDispatchToProps
-)(Header);
+)(Header));
