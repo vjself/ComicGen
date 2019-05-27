@@ -61,7 +61,9 @@ class Header extends Component {
     console.log(this.props, "this.props")
 
     return (
-      <div>
+      <div className= "header">
+        <div className= "logo">logo</div>
+
         <div className="home">
           <NavLink to="/">Home</NavLink>
         </div>
@@ -76,7 +78,7 @@ class Header extends Component {
       <div className="myprofile">
         <NavLink to ="/myprofile"> My Profile </NavLink> </div>
       <nav>
-        <ul>
+        <ul className="login>
           {!user ? ( 
           <li>
           <input
@@ -84,6 +86,7 @@ class Header extends Component {
           name="username"
           value={username}
           onChange={e =>
+
           this.changeHandler(e.target.name, e.target.value)
         }
         />
@@ -96,7 +99,7 @@ class Header extends Component {
           this.changeHandler(e.target.name, e.target.value)
       }
       />
-      <button id="login" onClick={() => this.login()}>Login</button>
+      <button id="logobutton" onClick={() => this.login()}>Login</button>
         </li>
           ) : (
             <button onClick={this.logout}>Logout</button>

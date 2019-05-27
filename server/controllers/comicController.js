@@ -20,5 +20,19 @@ saveComic: (req, res) => {
         console.log(err);
         res.status(400).send("Error saving comic")
     })
+},
+
+comicByUser(req, res) {
+    const db = req.app.get('db');
+    const { username } = req.body;
+    db.comic_join().then(comics => {
+        console.log(comics)
+        res.status(200).send(comics)
+    })
+    .catch(err => {
+        res.status(500).send({
+            message: "An error has occured on comicByUser"
+        })
+    })
 }
 }

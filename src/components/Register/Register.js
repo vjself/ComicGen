@@ -86,13 +86,22 @@ changeHandler = (name, value) => {
       profile_pic
     } = this.state;
 
+
+render(){
+    console.log(this.state.email, "Pulling In Email")
+    const { email, username, password, f_name, l_name, social, mom_m, age, gender, profile_pic} = this.state;
+    const { user } = this.props;
+
     return (
       <div>
         <h1>Register</h1>
 
+        <div className="regisForm">
             <ul>
-                <li>
+                <li className= "register">
+                   
                     <input 
+
                     placeholder = "email"
                     name = "email"
                     value={email}
@@ -176,6 +185,7 @@ changeHandler = (name, value) => {
                 
                 </li>
             </ul>
+            </div>
         </div>
     )
 
@@ -190,7 +200,9 @@ const mapStateToProps = reduxState => {
 };
 
 const mapDispatchToProps = {
-  register
+
+    register: register,
+
 };
 
 export default connect(

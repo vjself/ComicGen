@@ -1,1 +1,1 @@
-select * from comics order by comics_id desc;
+select * from comics order by comic_id desc;

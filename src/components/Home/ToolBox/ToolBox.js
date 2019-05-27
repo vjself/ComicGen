@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import Cloudinary from "../../Cloudinary/Cloudinary"
 import {
   setTitle,
   setText,
@@ -60,6 +61,7 @@ class ToolBox extends Component {
               })}
             </select>
           </div>
+
         )}
         <div>
           <input
@@ -89,6 +91,7 @@ class ToolBox extends Component {
             onChange={e => this.props.setChar(e.target.value)}
           />
         </div>
+              < Cloudinary />
         <div className="bg-input">
           <input
             placeholder="Background..."

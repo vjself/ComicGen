@@ -1,4 +1,5 @@
 import React, {Component} from "react";
+import {NavLink} from "react-router-dom";
 import axios from "axios";
 import "./Community.css"
 
@@ -7,8 +8,8 @@ export default class Community extends Component{
         super(props);
 
         this.state ={
-            comic: [],
-            token: ""
+            comics: [],
+        
         };
         this.getAllComics = this.getAllComics.bind(this);
     }
@@ -18,17 +19,19 @@ export default class Community extends Component{
     }
 
     getAllComics() {
-        axios.get("/api/comics").then(res => {
+        axios.get("/api/community").then(res => {
+            console.log(res.data)
             this.setState({
-                comic: res.data
+                comics: res.data,
             });
         });
     }
 
     render(){
-        const { comic, token } = this.state;
+        const { comics} = this.state;
 
-        const comicDisplay = comic.map(comic => {
+        const comicsDisplay = comics.map(comics => {
+            console.log(comics,"--->Comics")
             // let newComic = comic.comic.split('')
             // let copy = newComic.slice()
             // newComic.pop();
@@ -36,12 +39,13 @@ export default class Community extends Component{
             // let joinDatMoFo = newComic.join('')
 
             return (
-                <div className="outer">
-                <div key={comic.username}></div>
-                <div className="comics" key={comic.comics_id}></div>
+                <div>
+                <div><NavLink to ={`/${comics.user_id}`}> {comics.username}</NavLink></div>
+                <div>  {comics.title}</div>
+                <img src = {comics.comic} />
                 </div>
             )
         });
-        return <div className="videos">{comicDisplay}</div>
+        return <div className="videos">{comicsDisplay}Anyhting Popping up</div>
     }
 }
