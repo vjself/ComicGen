@@ -71,20 +71,6 @@ changeHandler = (name, value) => {
   };
 
 
-  render() {
-    console.log(this.state.email);
-    const {
-      email,
-      username,
-      password,
-      f_name,
-      l_name,
-      social,
-      mom_m,
-      age,
-      gender,
-      profile_pic
-    } = this.state;
 
 
 render(){
@@ -191,8 +177,9 @@ render(){
 
 }
 
-
+  
 }
+
 const mapStateToProps = reduxState => {
   return {
     user: reduxState.user
