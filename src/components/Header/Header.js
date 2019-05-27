@@ -78,7 +78,7 @@ class Header extends Component {
       <div className="myprofile">
         <NavLink to ="/myprofile"> My Profile </NavLink> </div>
       <nav>
-        <ul className="login>
+        <ul className="login">
           {!user ? ( 
           <li>
           <input
