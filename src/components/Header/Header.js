@@ -55,28 +55,28 @@ class Header extends Component {
     const { user } = authReducer
     console.log(this.props, "this.props")
     return (
-      <div>
-      <logo>logo</logo>
-      <div className="home">
-      <NavLink to="/" >
-      Home
-      </NavLink></div>
-      <div className="register">
-      <NavLink to="/register" >
-          Register
-        </NavLink> 
+      <div className= "header">
+        <div className= "logo">logo</div>
+        <div className="home">
+          <NavLink to="/" >
+            Home
+          </NavLink></div>
+        <div className="register">
+          <NavLink to="/register" >
+            Register
+          </NavLink> 
         </div>
-      <div className="feed">
-        <NavLink to ="/feed"> Community Feed </NavLink> </div>
-      <nav>
-        <ul>
-          {!user ? ( 
-          <li>
-          <input
-          placeholder="username"
-          name="username"
-          value={username}
-          onChange={e =>
+        <div className="feed">
+          <NavLink to ="/feed"> Community Comics </NavLink> </div>
+        <nav >
+          <ul className="login">
+           {!user ? ( 
+           <li >
+             <input 
+              placeholder="username"
+              name="username"
+              value={username}
+              onChange={e =>
           this.changeHandler(e.target.name, e.target.value)
         }
         />
@@ -89,7 +89,7 @@ class Header extends Component {
           this.changeHandler(e.target.name, e.target.value)
       }
       />
-      <button id="login" onClick={() => this.login()}>Login</button>
+      <button id="logobutton" onClick={() => this.login()}>Login</button>
         </li>
           ) : (
             <button onClick={this.logout}>Logout</button>

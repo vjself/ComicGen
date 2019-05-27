@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import Cloudinary from "../../Cloudinary/Cloudinary"
 import {
   setTitle,
   setText,
@@ -102,6 +103,9 @@ class ToolBox extends Component {
               Balloon?
             </button>
           </div>
+          
+            < Cloudinary />
+          
           <div>
             <button onClick={this.props.setUserComic}>Confirm</button>
           </div>
