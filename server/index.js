@@ -34,7 +34,6 @@ app.post("/api/logout", (req, res) => {
     res.sendStatus(200);
 });
 
-
 app.get("/api/user", (req,res) => {
     res.status(200).send(req.session.user);
 });

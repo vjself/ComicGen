@@ -3,6 +3,7 @@ import axios from 'axios';
 import {register} from "../../redux/authReducer";
 import "./register.css";
 import { connect } from 'react-redux';
+import userToolsReducer from '../../redux/userToolsReducer';
 
 class Register extends Component {
     constructor(props){
@@ -47,8 +48,17 @@ register(){
     .then(res => {
         console.log('front end reg res --> ', res.data)
         this.props.register(res.data);
-    })
-    .catch(err => alert(err));
+
+        console.log("this.props find user: ", this.props);
+        console.log("loginPayload.username: ", loginPayload.username)
+        console.log("loginPayload: ", loginPayload)
+        console.log("ressssss", res)
+        
+        this.props.history.push('/myprofile')  
+    }).catch(err => alert("User exists. Please log in"));
+
+   
+    
 }
 changeHandler = (name, value) => {
     this.setState({
@@ -65,7 +75,7 @@ render(){
         <h1>Register</h1>
             <ul>
                 <li>
-                    <input
+                    <input 
                     placeholder = "email"
                     name = "email"
                     value={email}
