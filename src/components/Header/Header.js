@@ -1,9 +1,11 @@
 import React, { Component } from "react";
+
 import { NavLink, withRouter } from "react-router-dom"
 import "./Header.css"
 import{login, logout} from "../../redux/authReducer"
 import Axios from "axios";
 import {connect} from "react-redux" 
+
 
 class Header extends Component {
   constructor(props) {
@@ -11,7 +13,7 @@ class Header extends Component {
 
     this.state = {
       username: "",
-      password: "",
+      password: ""
     };
     this.login = this.login.bind(this)
     this.logout = this.logout.bind(this)
@@ -23,6 +25,7 @@ class Header extends Component {
   //   });
   //   // this.login();
   // }
+
 
   logout = () => {
     Axios.post("/api/logout").then(() => {
@@ -56,17 +59,17 @@ class Header extends Component {
     const { authReducer } = this.props;
     const { user } = authReducer
     console.log(this.props, "this.props")
+
     return (
       <div>
-      <logo>logo</logo>
-      <div className="home">
-      <NavLink to="/" >
-      Home
-      </NavLink></div>
-      <div className="register">
-      <NavLink to="/register" >
-          Register
-        </NavLink> 
+        <div className="home">
+          <NavLink to="/">Home</NavLink>
+        </div>
+        <div className="register">
+          <NavLink to="/register">Register</NavLink>
+        </div>
+        <div className="feed">
+          <NavLink to="/feed"> Community Feed </NavLink>{" "}
         </div>
       <div className="feed">
         <NavLink to ="/feed"> Community Feed </NavLink> </div>
@@ -121,3 +124,4 @@ export default withRouter(connect(
   mapStateToProps,
   mapDispatchToProps
 )(Header));
+

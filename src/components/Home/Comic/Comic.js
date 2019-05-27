@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { Strip, Panel, Character, Balloon } from "react-komik";
 import { connect } from "react-redux";
+import "./Comic.css";
 
 class Comic extends Component {
   constructor(props) {
@@ -10,20 +11,22 @@ class Comic extends Component {
   }
 
   render() {
-    // let panelInstance = this.props.panels.map((panel, index) => {
-    //   return (
-    //     <Panel key={index} background={panel.panelBackground}>
-    //       <Character image={panel.char}>
-    //         <Balloon text={panel.baloonText} />
-    //       </Character>
-    //     </Panel>
-    //   );
-    // });
+
+    let panelInstance = this.props.userComic.map((panel, index) => {
+      return (
+        <Panel key={index} background={panel.bg}>
+          <Character image={panel.char}>
+            {panel.balloonBool === true && <Balloon text={panel.balloonText} />}
+          </Character>
+        </Panel>
+      );
+    });
     return (
       <div className="comic-container">
-        <Strip title={"Title"} column="2">
-          {/* {panelInstance} */}
-        </Strip>
+        {this.props.userComic.length > 0 && (
+          <Strip column="2">{panelInstance}</Strip>
+        )}
+
       </div>
     );
   }
@@ -31,8 +34,8 @@ class Comic extends Component {
 
 const mapStateToProps = reduxState => {
   return {
-    title: reduxState.titleInput,
-    panels: reduxState.panels
+    titleInput: reduxState.userToolsReducer.titleInput,
+    userComic: reduxState.userToolsReducer.userComic
   };
 };
 
