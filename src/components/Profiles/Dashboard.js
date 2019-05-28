@@ -1,5 +1,7 @@
 import React, {Component} from 'react';
 import './Dashboard.css';
+import Cloudinary from "../Cloudinary/Cloudinary";
+import bodyParser from "body-parser"
 import axios from 'axios';
 
 
@@ -11,16 +13,31 @@ export default class Dashboard extends Component{
         super();
 
         this.state = {
-
-        }
+           comics:[],
+           edit: false
+        };
+       this.getOne = this.getOne.bind(this);
+    }
+    componentDidMount(){
+        this.getOne();
+    }
+    getOne(){
+        axios.get('/api/dashComics/').then(res => {
+            this.setState({
+                comic:res.data
+            })
+        })
     }
 
-
     render(){
+        const { comic } =this.state;
         return(
 
             // This is for everything on the dashboard page
             <div class="Dashboard">
+                <br/>
+                <br/>
+                <br/>
                 <br/>
                 <br/>
                 <br/>
@@ -33,13 +50,14 @@ export default class Dashboard extends Component{
                     <br/>
                     <h2>Comic Creations</h2>
                     <br/>
+                <Cloudinary />
                 </div>
 
                 {/* This is for the comic boxes */}
-                <div class="Comic-Boxes">        
+                <div class="Comic-Boxes" key={comic}>        
                     {/* Individual boxes */}
                     <div class="flex-container"> 
-                    Box 1
+                    Box 1 {comic}
                     </div>
                     <div class="flex-container"> 
                     Box 2

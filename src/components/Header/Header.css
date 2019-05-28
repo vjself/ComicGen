@@ -23,7 +23,7 @@
   
   justify-self: stretch;
   position: relative;
-  left: 160px;
+  left: 140px;
   
 }
 
@@ -31,14 +31,14 @@
   text-decoration: none;
   justify-self: stretch;
   position: relative;
-  left: 140px;
+  left: 120px;
 }
 
 .header .home{
   text-decoration: none;
   justify-self: stretch;
   position: relative;
-  left: 120px;
+  left: 100px;
   justify-content: space-between;
 }
 
@@ -47,9 +47,16 @@
 .header .login{
 background-color:red;
 position: relative;
-left: 50%;
+left: 250%;
 }
 
+.header .myprofile{
+  text-decoration: none;
+  justify-self: stretch;
+  position: relative;
+  left: 160px;
+  justify-content: space-between;
+}
 
 
 

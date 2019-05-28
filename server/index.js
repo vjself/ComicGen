@@ -2,7 +2,7 @@ const express = require("express");
 const app = express();
 const bodyParser = require('body-parser');
 const uC = require ("./controllers/userController");
-const cC = require ("./controllers/comicController")
+const cC = require ("./controllers/comicController");
 const massive = require("massive");
 const session = require("express-session")
 app.use(express.json())
@@ -16,7 +16,7 @@ app.use(
     session({
         secret: SESSION_SECRET,
         resave: false,
-        saveUnitialized: false,
+        saveUninitialized: false,
         cookie: {
             maxAge: 1000 * 60 * 60 * 24 *14
         }
@@ -45,6 +45,7 @@ app.use(
     // comics
     app.get("/api/comics", cC.getAll)
     app.get("/api/community", cC.comicByUser)
+    // app.post('/api/comic',cC.upload);
 
 
     // cloudinary
@@ -58,9 +59,11 @@ app.use(
             signature: signature,
             timestamp: timestamp
         };
+
             res.json(payload);
     
     });
+    
     
     app.use(bodyParser.json())
     app.use(express.json());

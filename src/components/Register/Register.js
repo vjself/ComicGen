@@ -80,6 +80,11 @@ render(){
 
     return (
       <div>
+          <br/>
+          <br/>
+          <br/>
+          <br/>
+          <br/>
         <h1>Register</h1>
 
         <div className="regisForm">

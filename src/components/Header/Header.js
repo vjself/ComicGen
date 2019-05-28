@@ -70,13 +70,12 @@ class Header extends Component {
         <div className="register">
           <NavLink to="/register">Register</NavLink>
         </div>
-        <div className="feed">
-          <NavLink to="/feed"> Community Feed </NavLink>{" "}
-        </div>
+      
       <div className="feed">
-        <NavLink to ="/feed"> Community Feed </NavLink> </div>
-      <div className="myprofile">
-        <NavLink to ="/myprofile"> My Profile </NavLink> </div>
+        <NavLink to ="/feed"> Community </NavLink> </div>
+        <div className="myprofile">
+        <NavLink to ="/myprofile"> Profile </NavLink> </div>
+      
       <nav>
         <ul className="login">
           {!user ? ( 
