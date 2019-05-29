@@ -13,14 +13,25 @@ export default class Dashboard extends Component{
         this.state = {
 
         }
-    }
+    } 
 
 
     render(){
         return(
+            // This will be to conditionally render the user profile or other profiles
+            // <div>
+            //     {
+            //         ?
+            //         :
+            //     }
+            // </div>
 
             // This is for everything on the dashboard page
             <div class="Dashboard">
+                <br/>
+                <br/>
+                <br/>
+                <br/>
                 <br/>
                 <br/>
                 <br/>
