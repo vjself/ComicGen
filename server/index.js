@@ -4,7 +4,7 @@ const bodyParser = require('body-parser');
 const uC = require ("./controllers/userController");
 const cC = require ("./controllers/comicController");
 const massive = require("massive");
-const session = require("express-session")
+const session = require("express-session");
 app.use(express.json())
 const cloudinary = require('cloudinary');
 require("dotenv").config();
@@ -45,13 +45,13 @@ app.use(
     // comics
     app.get("/api/comics", cC.getAll)
     app.get("/api/community", cC.comicByUser)
-    // app.post('/api/comic',cC.upload);
+    app.post('/api/comic',cC.upload);
 
 
     // cloudinary
-
+    
     app.get('/api/upload', (req, res) => {
-        const timestamp = Math.round((new Date()).getTime() / 1000);
+        const timestamp = Math.round(new Date().getTime() / 1000);
         const api_secret  = process.env.CLOUDINARY_SECRET_API;
         const signature = cloudinary.utils.api_sign_request({ timestamp: timestamp }, api_secret);
     
@@ -63,6 +63,10 @@ app.use(
             res.json(payload);
     
     });
+    const path = require('path')
+app.get('*', (req, res)=>{
+  res.sendFile(path.join(__dirname, '../build/index.html'));
+})
     
     
     app.use(bodyParser.json())

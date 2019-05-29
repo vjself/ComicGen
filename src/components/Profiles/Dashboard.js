@@ -54,10 +54,10 @@ export default class Dashboard extends Component{
                 </div>
 
                 {/* This is for the comic boxes */}
-                <div class="Comic-Boxes" key={comic}>        
+                <div class="Comic-Boxes" >        
                     {/* Individual boxes */}
                     <div class="flex-container"> 
-                    Box 1 {comic}
+                    Box 1 
                     </div>
                     <div class="flex-container"> 
                     Box 2
