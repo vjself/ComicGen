@@ -1,8 +1,9 @@
 import React, {Component} from 'react';
 import './Dashboard.css';
 import Cloudinary from "../Cloudinary/Cloudinary";
-// import bodyParser from "body-parser"
+import bodyParser from "body-parser"
 import axios from 'axios';
+import Artist_Comics from '../Artist_Comics/Artist_Comics';
 
 
 //import the user's comic creations
@@ -22,9 +23,9 @@ export default class Dashboard extends Component{
         this.getOne();
     }
     getOne(){
-        axios.get('/api/dashComics/').then(res => {
+        axios.get("/api/dashComics").then(res => {
             this.setState({
-                comic:res.data
+                comics:res.data
             })
         })
     }
@@ -57,6 +58,7 @@ export default class Dashboard extends Component{
                 <div class="Comic-Boxes" >        
                     {/* Individual boxes */}
                     <div class="flex-container"> 
+                   <Artist_Comics />
                     Box 1 
                     </div>
                     <div class="flex-container"> 

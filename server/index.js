@@ -45,7 +45,8 @@ app.use(
     // comics
     app.get("/api/comics", cC.getAll)
     app.get("/api/community", cC.comicByUser)
-    // app.post('/api/comic',cC.upload);
+    app.get("/api/dashComics", cC.getOne)
+    app.post('/api/comic',cC.upload);
 
 
     // cloudinary
@@ -64,7 +65,7 @@ app.use(
     
     });
 
-    
+
     const path = require('path')
 app.get('*', (req, res)=>{
   res.sendFile(path.join(__dirname, '../build/index.html'));

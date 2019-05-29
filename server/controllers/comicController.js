@@ -36,7 +36,7 @@ comicByUser(req, res) {
     })
 },
 
-uploads: (req, res) => {
+upload: (req, res) => {
     const db = req.app.get("db");
     const { comic, id } = req.body;
     db.upload_comic([comic, id])
@@ -52,7 +52,7 @@ uploads: (req, res) => {
 getOne: (req,res) => {
     const db = req.app.get("db")
     console.log(req.session, "GetOne")
-    db.get_one(req.session.user.id).then( comic => {
+    db.get_one(req.session.users.id).then( comic => {
         console.log(comic, "Comic LABEL");
         res.status(200).json(comic);
     })
