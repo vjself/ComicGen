@@ -1,9 +1,16 @@
 import React, { Component } from "react";
-import Cloudinary from "../../Cloudinary/Cloudinary"
+import arnold from "./Chars/arnold.png";
+import anabelle from "./Chars/anabelle.png";
+import beavis from "./Chars/beavis.png";
+import goku from "./Chars/goku.png";
+import pup from "./Chars/pup.png";
+import plains from "./Chars/plains.jpg";
+import clouds from "./Chars/clouds.jpeg";
+import desert from "./Chars/desert.png";
+import jungle from "./Chars/jungle.jpg";
+
 import {
-  setTitle,
   setText,
-  balloonToggleHandle,
   setBackground,
   setChar,
   setPanelNumber,
@@ -32,92 +39,83 @@ class ToolBox extends Component {
   };
 
   render() {
-    console.log(this.props);
-    const {
-      titleInput,
-      balloonInput,
-      char,
-      panelBackground,
-      balloonToggle,
-      setPanels
-    } = this.props;
+    const { balloonInput, setPanels } = this.props;
     return (
       <div className="tool-box">
-        ToolBox
-        <input
-          maxLength="1"
-          placeholder="How many panels?"
-          type="text"
-          onChange={e => {
-            e.target.value.length <= 1 && setPanels(+e.target.value);
-          }}
-        />
-        {this.props.panels.length && (
-          <div className="panel-select">
+        <h2 id="toolbox-h">ToolBox</h2>
+        {this.props.panels.length !== 0 ? (
+          <div className="panel-select" id="ps">
             <select onChange={e => this.panelController(e.target.value)}>
-              <option>--Panel--</option>
+              <option>--Select a Panel--</option>
               {this.props.panels.map((e, i) => {
                 return <option name={i}>{i + 1}</option>;
               })}
             </select>
           </div>
-
+        ) : (
+          <div className="panel-select">
+            <select
+              id="panel-num"
+              onChange={e => {
+                e.target.value.length <= 1 && setPanels(+e.target.value);
+              }}
+            >
+              <option>--How many panels?---</option>
+              <option value={1}>1</option>
+              <option value={2}>2</option>
+              <option value={3}>3</option>
+              <option value={4}>4</option>
+            </select>
+          </div>
         )}
         <div>
           <input
-            className="title-input"
-            placeholder="Title..."
-            type="text"
-            value={titleInput}
-            onChange={e => {
-              this.props.setTitle(e.target.value);
-            }}
-          />
-        </div>
-        <div>
-          <input
             className="txt-input"
-            placeholder="Text..."
+            placeholder="Insert Dialogue Here..."
             type="text"
             value={balloonInput}
-            onChange={e => this.props.setText(e.target.value)}
+            onChange={e =>
+              this.props.panelNumber.length
+                ? this.props.setText(e.target.value)
+                : alert("You must select a panel before moving forward.")
+            }
           />
         </div>
-        <div className="char-input">
-          <input
-            placeholder="Character..."
-            type="text"
-            value={char}
-            onChange={e => this.props.setChar(e.target.value)}
-          />
+        <div className="panel-select">
+          <select
+            onChange={e => {
+              this.props.setChar(e.target.value);
+            }}
+          >
+            <option>--Select Character--</option>
+            <option value={arnold}>Arnold</option>
+            <option value={anabelle}>Anabelle</option>
+            <option value={pup}>Mr. Dog</option>
+            <option value={goku}>Goku</option>
+            <option value={beavis}>Beavis</option>
+          </select>
         </div>
-              < Cloudinary />
-        <div className="bg-input">
-          <input
-            placeholder="Background..."
-            type="text"
-            value={panelBackground}
+        <div className="panel-select">
+          <select
             onChange={e => {
               this.props.setBackground(e.target.value);
             }}
-          />
-        </div>
-        <div className="balloon-toggle">
-          <h2>Balloon?</h2>
-          <button
-            onClick={() => this.props.balloonToggleHandle(!balloonToggle)}
           >
-            {this.props.balloonToggle === true ? "On" : "Off"}
-          </button>
+            <option>--Select an environment--</option>
+            <option value={plains}>Plains</option>
+            <option value={jungle}>Jungle</option>
+            <option value={clouds}>Sky</option>
+            <option value={desert}>Desert</option>
+          </select>
         </div>
         <div className="confirm-btn">
           <button id="c-btn" onClick={this.fieldController}>
-            Confirm
+            Confirm Panel
           </button>
         </div>
         <div className="save-btn">
           <button id="c-btn" onClick={this.props.saveUserComic}>
-            SaveComic
+            Render Comic
           </button>
         </div>
       </div>
@@ -128,10 +126,8 @@ class ToolBox extends Component {
 const mapStateToProps = reduxState => {
   return {
     user: reduxState.userToolsReducer.user,
-    titleInput: reduxState.userToolsReducer.titleInput,
     balloonInput: reduxState.userToolsReducer.balloonInput,
     panelBackground: reduxState.userToolsReducer.panelBackground,
-    balloonToggle: reduxState.userToolsReducer.balloonToggle,
     char: reduxState.userToolsReducer.char,
     panels: reduxState.userToolsReducer.panels,
     panelNumber: reduxState.userToolsReducer.panelNumber
@@ -139,9 +135,7 @@ const mapStateToProps = reduxState => {
 };
 
 const mapDispatchToProps = {
-  setTitle,
   setText,
-  balloonToggleHandle,
   setBackground,
   setChar,
   setPanelNumber,

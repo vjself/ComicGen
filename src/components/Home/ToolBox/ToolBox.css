@@ -12,6 +12,10 @@
   margin-left: 100px;
 }
 
+#toolbox-h {
+  border-bottom: 1px dashed rgba(0, 0, 0, 0.596);
+}
+
 .dash-container {
   display: flex;
   flex-direction: row;
@@ -43,7 +47,10 @@
 
 .panel-select {
   position: relative;
-  /* transform: translate(-50%, -50%); */
+}
+
+#ps select {
+  background-color: rgba(0, 255, 55, 0.712);
 }
 
 .panel-select select {
@@ -100,4 +107,8 @@
   border: 2px solid rgba(0, 162, 255, 0.712) !important;
   border-radius: 6px;
   padding: 6px;
+}
+
+.save-btn {
+  border-top: 1px dashed rgba(0, 0, 0, 0.548);
 }
