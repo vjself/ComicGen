@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import './Dashboard.css';
 import Cloudinary from "../Cloudinary/Cloudinary";
-import bodyParser from "body-parser"
+// import bodyParser from "body-parser"
 import axios from 'axios';
 
 

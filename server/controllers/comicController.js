@@ -1,14 +1,14 @@
 module.exports = {
-    getAll: (req, res) => {
-        const db = req.app.get("db");
+getAll: (req, res) => {
+    const db = req.app.get("db");
 
-        db.get_all().then(comic =>{
-            console.log(comic);
-            res.status(200).json(comic)
-        })
-        .catch(err => console.log(err.detail));
+    db.get_all().then(comic =>{
+        console.log(comic);
+        res.status(200).json(comic)
+    })
+    .catch(err => console.log(err.detail));
 
-    },
+},
 saveComic: (req, res) => {
     const db = req.app.get("db");
     const {title, comic, id} = req.body;
@@ -36,7 +36,7 @@ comicByUser(req, res) {
     })
 },
 
-upload: (req, res) => {
+uploads: (req, res) => {
     const db = req.app.get("db");
     const { comic, id } = req.body;
     db.upload_comic([comic, id])
