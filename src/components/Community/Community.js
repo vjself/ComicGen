@@ -40,6 +40,11 @@ export default class Community extends Component{
 
             return (
                 <div>
+                    <br/>
+                    <br/>
+                    <br/>
+                    <br/>
+                    <br/>
                 <div><NavLink to ={`/${comics.user_id}`}> {comics.username}</NavLink></div>
                 <div>  {comics.title}</div>
                 <img src = {comics.comic} />

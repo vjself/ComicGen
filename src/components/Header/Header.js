@@ -65,49 +65,45 @@ class Header extends Component {
         <div className="register">
           <NavLink to="/register">Register</NavLink>
         </div>
-        <div className="feed">
-          <NavLink to="/feed"> Community Feed </NavLink>{" "}
-        </div>
-        <div className="feed">
-          <NavLink to="/feed"> Community Feed </NavLink>{" "}
-        </div>
+
+      <div className="feed">
+        <NavLink to ="/feed"> Community </NavLink> </div>
         <div className="myprofile">
-          <NavLink to="/myprofile"> My Profile </NavLink>{" "}
-        </div>
-        <nav>
-          <ul className="login">
-            {!user ? (
-              <li>
-                <input
-                  placeholder="username"
-                  name="username"
-                  value={username}
-                  onChange={e =>
-                    this.changeHandler(e.target.name, e.target.value)
-                  }
-                />
-                <input
-                  placeholder="password"
-                  type="password"
-                  name="password"
-                  value={password}
-                  onChange={e =>
-                    this.changeHandler(e.target.name, e.target.value)
-                  }
-                />
-                <button id="logobutton" onClick={() => this.login()}>
-                  Login
-                </button>
-              </li>
-            ) : (
-              <button onClick={this.logout}>Logout</button>
-            )}
-            {JSON.stringify(this.state.user)}
-          </ul>
-        </nav>
-      </div>
-    );
-  }
+        <NavLink to ="/myprofile"> Profile </NavLink> </div>
+      
+      <nav>
+        <ul className="login">
+          {!user ? ( 
+          <li>
+          <input
+          placeholder="username"
+          name="username"
+          value={username}
+          onChange={e =>
+
+          this.changeHandler(e.target.name, e.target.value)
+        }
+        />
+        <input
+          placeholder="password"
+          type="password"
+          name="password"
+          value={password}
+          onChange={e =>
+          this.changeHandler(e.target.name, e.target.value)
+      }
+      />
+      <button id="logobutton" onClick={() => this.login()}>Login</button>
+        </li>
+          ) : (
+            <button onClick={this.logout}>Logout</button>
+          )}
+          {JSON.stringify(this.state.user)}
+        </ul>
+      </nav>
+    </div>
+    
+    )}
 }
 
 const mapStateToProps = reduxState => {

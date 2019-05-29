@@ -34,5 +34,28 @@ comicByUser(req, res) {
             message: "An error has occured on comicByUser"
         })
     })
+},
+
+upload: (req, res) => {
+    const db = req.app.get("db");
+    const { comic, id } = req.body;
+    db.upload_comic([comic, id])
+    .then(response => {
+        res.status(200).json(response);
+    })
+    .catch(err => {
+        console.log(err);
+        res.status(400).send("error at upload")
+    })
+},
+
+getOne: (req,res) => {
+    const db = req.app.get("db")
+    console.log(req.session, "GetOne")
+    db.get_one(req.session.user.id).then( comic => {
+        console.log(comic, "Comic LABEL");
+        res.status(200).json(comic);
+    })
+    .catch(err => console.log(err))
 }
 }

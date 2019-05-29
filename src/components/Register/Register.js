@@ -55,6 +55,7 @@ class Register extends Component {
     });
   };
 
+
   render() {
     const {
       email,
@@ -68,8 +69,14 @@ class Register extends Component {
       gender,
       profile_pic
     } = this.state;
+
     return (
       <div>
+          <br/>
+          <br/>
+          <br/>
+          <br/>
+          <br/>
         <h1>Register</h1>
 
         <div className="regisForm">
