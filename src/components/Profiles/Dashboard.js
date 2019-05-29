@@ -14,6 +14,7 @@ export default class Dashboard extends Component{
         super();
 
         this.state = {
+
            comics:[],
            edit: false
         };
@@ -33,6 +34,13 @@ export default class Dashboard extends Component{
     render(){
         const { comic } =this.state;
         return(
+            // This will be to conditionally render the user profile or other profiles
+            // <div>
+            //     {
+            //         ?
+            //         :
+            //     }
+            // </div>
 
             // This is for everything on the dashboard page
             <div class="Dashboard">
@@ -42,6 +50,8 @@ export default class Dashboard extends Component{
                 <br/>
                 <br/>
                 <br/>
+                <br/>
+
                 <h1>Dashboard</h1>
 
                 {/* This is for all of the user's comics */}

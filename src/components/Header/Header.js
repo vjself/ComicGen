@@ -56,49 +56,54 @@ class Header extends Component {
     const { user } = authReducer;
 
     return (
-      <div className="header">
-        <div className="logo">logo</div>
+      <div className= "header">
+        <div className= "logo"><NavLink to="/">Logo</NavLink></div>
+
 
         <div className="home">
-          <NavLink to="/">Home</NavLink>
+          <NavLink to="/home">Home</NavLink>
         </div>
+
         <div className="register">
           <NavLink to="/register">Register</NavLink>
         </div>
 
       <div className="feed">
-        <NavLink to ="/feed"> Community </NavLink> </div>
-        <div className="myprofile">
-        <NavLink to ="/myprofile"> Profile </NavLink> </div>
+        <NavLink to ="/feed"> Community Feed </NavLink>
+      </div>
+
+      <div className="myprofile">
+        <NavLink to ="/myprofile"> My Profile </NavLink> </div>
       
-      <nav>
+      
+      <nav>  
+
         <ul className="login">
           {!user ? ( 
-          <li>
-          <input
-          placeholder="username"
-          name="username"
-          value={username}
-          onChange={e =>
-
-          this.changeHandler(e.target.name, e.target.value)
-        }
-        />
-        <input
-          placeholder="password"
-          type="password"
-          name="password"
-          value={password}
-          onChange={e =>
-          this.changeHandler(e.target.name, e.target.value)
-      }
-      />
-      <button id="logobutton" onClick={() => this.login()}>Login</button>
-        </li>
-          ) : (
+            <li>
+            <input
+              placeholder="username"
+              name="username"
+              value={username}
+              onChange={e =>
+                this.changeHandler(e.target.name, e.target.value)
+              }
+            />
+            <input
+              placeholder="password"
+              type="password"
+              name="password"
+              value={password}
+              onChange={e =>
+                this.changeHandler(e.target.name, e.target.value)
+              }
+             />
+            <button id="logobutton" onClick={() => this.login()}>Login</button>
+            </li>
+           ) : (
             <button onClick={this.logout}>Logout</button>
-          )}
-          {JSON.stringify(this.state.user)}
+            )}
+            {JSON.stringify(this.state.user)}
         </ul>
       </nav>
     </div>

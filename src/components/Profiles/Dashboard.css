@@ -13,15 +13,8 @@ h2{
     text-align: center;
 }
 
-.Comic-Creations{
+.Comic-Creations{ 
   text-align: center;
-}
-
-.Comic-Boxes{
-    border: 5px solid black;
-    border-style: solid;
-    padding: 5px;
-    text-align: center;
 }
 
 .flex-container{

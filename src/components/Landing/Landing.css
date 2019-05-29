@@ -1,0 +1,61 @@
+.page{
+    /* background-image: url('space.jpg'); */
+    width: auto;
+    background-blend-mode: lighten;
+    background-image: linear-gradient(to right,blue 0%,red 100%),url('space.jpg');
+}
+
+.frame{
+    border: 0px solid black;
+    margin: 0px;
+    padding: 0px;
+    font-size: 20px;
+}
+
+.title{
+    display: flex;
+    font-family: 'Raleway', sans-serif;
+    font-size: 60px;
+    font-weight: 900;
+    margin: 5px;
+    border: 10px solid black;
+    padding: 10px;
+    justify-content: center;
+    text-align: center;
+}
+ 
+.description-text, .example-picture{
+    border: 1px solid black;
+    margin: 20px 20px;
+    font-family: 'Raleway', sans-serif;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    font-weight: bold;
+    text-align: center;
+    padding: 30px;
+    font-size: 35px;
+}
+
+.description-text{
+    display: flex;
+
+}
+
+.example-picture{
+    display: flex;
+
+}
+
+
+.flex-container1{
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    margin: auto;
+    border: 0px solid black;
+    padding: 25px;
+    text-align: center;
+    height: 500px;
+    width: 500px;
+}

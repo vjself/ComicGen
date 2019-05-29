@@ -55,7 +55,6 @@ class Register extends Component {
     });
   };
 
-
   render() {
     const {
       email,
