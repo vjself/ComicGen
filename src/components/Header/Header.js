@@ -1,11 +1,10 @@
 import React, { Component } from "react";
 
-import { NavLink, withRouter } from "react-router-dom"
-import "./Header.css"
-import{login, logout} from "../../redux/authReducer"
+import { NavLink, withRouter } from "react-router-dom";
+import "./Header.css";
+import { login, logout } from "../../redux/authReducer";
 import Axios from "axios";
-import {connect} from "react-redux" 
-
+import { connect } from "react-redux";
 
 class Header extends Component {
   constructor(props) {
@@ -15,8 +14,8 @@ class Header extends Component {
       username: "",
       password: ""
     };
-    this.login = this.login.bind(this)
-    this.logout = this.logout.bind(this)
+    this.login = this.login.bind(this);
+    this.logout = this.logout.bind(this);
   }
   // componentDidMount() {
   //   Axios.get("/api/user").then(res => {
@@ -26,28 +25,25 @@ class Header extends Component {
   //   // this.login();
   // }
 
-
   logout = () => {
     Axios.post("/api/logout").then(() => {
       this.props.logout(null);
     });
   };
-  
-  
-  login(){
+
+  login() {
     const loginPayload = {
       username: this.state.username,
       password: this.state.password
     };
-    Axios.post("/api/login", loginPayload).then(res => {
-      console.log("logged in", res.data);
-      
-      this.props.login(res.data);
-      this.props.history.push('/myprofile')
-      
-    }).catch(err => alert("Please try logging in again.", err));
+    Axios.post("/api/login", loginPayload)
+      .then(res => {
+        this.props.login(res.data);
+        this.props.history.push("/myprofile");
+      })
+      .catch(err => alert("Please try logging in again.", err));
   }
-  
+
   changeHandler = (name, value) => {
     this.setState({
       [name]: value
@@ -57,12 +53,11 @@ class Header extends Component {
   render() {
     const { username, password } = this.state;
     const { authReducer } = this.props;
-    const { user } = authReducer
-    console.log(this.props, "this.props")
+    const { user } = authReducer;
 
     return (
-      <div className= "header">
-        <div className= "logo">logo</div>
+      <div className="header">
+        <div className="logo">logo</div>
 
         <div className="home">
           <NavLink to="/">Home</NavLink>
@@ -70,7 +65,7 @@ class Header extends Component {
         <div className="register">
           <NavLink to="/register">Register</NavLink>
         </div>
-      
+
       <div className="feed">
         <NavLink to ="/feed"> Community </NavLink> </div>
         <div className="myprofile">
@@ -112,18 +107,18 @@ class Header extends Component {
 }
 
 const mapStateToProps = reduxState => {
-  console.log(reduxState)
   return {
     authReducer: reduxState.authReducer
   };
 };
 const mapDispatchToProps = {
   login,
-  logout,
+  logout
 };
 
-export default withRouter(connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(Header));
-
+export default withRouter(
+  connect(
+    mapStateToProps,
+    mapDispatchToProps
+  )(Header)
+);

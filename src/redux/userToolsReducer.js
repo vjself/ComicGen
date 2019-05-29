@@ -1,17 +1,13 @@
 const initialState = {
   panelNumber: 0,
-  titleInput: "",
   balloonInput: "",
   panelBackground: "",
-  balloonToggle: true,
   char: "",
   panels: [],
   userComic: []
 };
 
-const SET_TITLE = "SET_TITLE";
 const SET_TEXT = "SET_TEXT";
-const BALLOON_TOGGLE_HANDLE = "BALLOON_TOGGLE";
 const SET_BG = "SET_BG";
 const SET_CHAR = "SET_CHAR";
 const SAVE_USER_PANEL = "SAVE_USER_PANEL";
@@ -25,23 +21,19 @@ export default function userToolsReducer(state = initialState, action) {
   switch (action.type) {
     case SET_TEXT:
       return { ...state, balloonInput: payload };
-    case SET_TITLE:
-      return { ...state, titleInput: payload };
     case SET_BG:
       return { ...state, panelBackground: payload };
-    case BALLOON_TOGGLE_HANDLE:
-      return { ...state, balloonToggle: payload };
     case SET_CHAR:
       return { ...state, char: payload };
     case SET_PANEL_NUMBER:
       return { ...state, panelNumber: payload };
     case SAVE_USER_COMIC:
+      console.log(state.panels);
       let comic = [...state.panels];
       return { ...state, userComic: comic };
     case RESET_FIELDS:
       return {
         ...state,
-        titleInput: "",
         panelBackground: "",
         char: "",
         balloonInput: ""
@@ -49,15 +41,11 @@ export default function userToolsReducer(state = initialState, action) {
     case SAVE_USER_PANEL:
       let copy = [...state.panels];
       let panel = {
-        balloontext: state.balloonInput,
+        balloonText: state.balloonInput,
         bg: state.panelBackground,
-        char: state.char,
-        baloonBool: state.balloonToggle
+        char: state.char
       };
-      console.log("Panel", panel);
-      console.log("panelNumber", state.panelNumber - 1);
       copy[state.panelNumber - 1] = panel;
-      console.log("Copy", copy);
       return { ...state, panels: copy };
     case SET_PANELS:
       let panelCreator = function() {
@@ -66,8 +54,7 @@ export default function userToolsReducer(state = initialState, action) {
           arr.push({
             balloonText: "",
             bg: "",
-            char: "",
-            balloonBool: true
+            char: ""
           });
         }
         return arr;
@@ -79,12 +66,6 @@ export default function userToolsReducer(state = initialState, action) {
   }
 }
 
-export function setTitle(title) {
-  return {
-    type: SET_TITLE,
-    payload: title
-  };
-}
 export function setText(text) {
   return {
     type: SET_TEXT,
@@ -103,18 +84,7 @@ export function setChar(text) {
     payload: text
   };
 }
-export function balloonToggle(bool) {
-  return {
-    type: SET_CHAR,
-    payload: bool
-  };
-}
-export function balloonToggleHandle(bool) {
-  return {
-    type: BALLOON_TOGGLE_HANDLE,
-    payload: bool
-  };
-}
+
 export function setBackground(bg) {
   return {
     type: SET_BG,
