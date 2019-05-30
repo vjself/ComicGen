@@ -31,6 +31,6 @@ export default class Artist_Comics extends Component {
             <img src={comics.comic} alt=""/> Comics 
             </div>
             )
-    };
+            return <div>{comics}</div>
+        };
     }
-    // return <div>{comics}</div>

@@ -10,11 +10,13 @@ import Artist_Comics from '../Artist_Comics/Artist_Comics';
 
 
 export default class Dashboard extends Component{
-    constructor(){
-        super();
+    constructor(props){
+        super(props);
 
         this.state = {
-           comics:[],
+           comic:[],
+           cloudinaryUrl: [],
+           uploaded: '',
            edit: false
         };
        this.getOne = this.getOne.bind(this);
@@ -27,6 +29,16 @@ export default class Dashboard extends Component{
             this.setState({
                 comics:res.data
             })
+        })
+    }
+    upload (){
+        const storePayload = {
+            comic: this.state.cloudinaryUrl,
+            id:this.props.users.id
+        }; console.log(this.state.cloudinaryUrl, "CloudinaryUrl")
+        axios.post("/api/comic", storePayload).then(res => {
+            alert("Post Added")
+            this.getOne();
         })
     }
 
@@ -52,6 +64,7 @@ export default class Dashboard extends Component{
                     <h2>Comic Creations</h2>
                     <br/>
                 <Cloudinary />
+                <button onClick={this.upload}>upload</button>
                 </div>
 
                 {/* This is for the comic boxes */}
