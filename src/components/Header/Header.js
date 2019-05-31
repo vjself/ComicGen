@@ -103,7 +103,7 @@ class Header extends Component {
           ) : (
             <button onClick={this.logout}>Logout</button>
           )}
-          {JSON.stringify(this.state.user)}
+          {JSON.stringify(this.state.users)}
         </ul>
       </nav>
     </div>
