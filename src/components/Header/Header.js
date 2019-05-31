@@ -1,9 +1,9 @@
 import React, { Component } from "react";
-
 import { NavLink, withRouter } from "react-router-dom";
 import "./Header.css";
 import { login, logout } from "../../redux/authReducer";
 import Axios from "axios";
+import logo from "../Home/ToolBox/Chars/logo.png";
 import { connect } from "react-redux";
 
 class Header extends Component {
@@ -17,13 +17,6 @@ class Header extends Component {
     this.login = this.login.bind(this);
     this.logout = this.logout.bind(this);
   }
-  // componentDidMount() {
-  //   Axios.get("/api/user").then(res => {
-  //     console.log("res.data",res)
-  //     this.props.login(res.data);
-  //   });
-  //   // this.login();
-  // }
 
   logout = () => {
     Axios.post("/api/logout").then(() => {
@@ -39,9 +32,9 @@ class Header extends Component {
     Axios.post("/api/login", loginPayload)
       .then(res => {
         this.props.login(res.data);
-        this.props.history.push("/myprofile");
       })
       .catch(err => alert("Please try logging in again.", err));
+    this.props.history.push("/home");
   }
 
   changeHandler = (name, value) => {
@@ -54,61 +47,57 @@ class Header extends Component {
     const { username, password } = this.state;
     const { authReducer } = this.props;
     const { user } = authReducer;
-
+    console.log(user);
     return (
-      <div className= "header">
-        <div className= "logo"><NavLink to="/">Logo</NavLink></div>
-
+      <div className="header">
+        <NavLink to="/">
+          <img className="logo" src={logo} alt="" />
+        </NavLink>
 
         <div className="home">
-          <NavLink to="/home">Home</NavLink>
+          <NavLink to="/home">Create</NavLink>
         </div>
 
         <div className="register">
           <NavLink to="/register">Register</NavLink>
         </div>
 
-      <div className="feed">
-        <NavLink to ="/feed"> Community Feed </NavLink>
-      </div>
+        <div className="feed">
+          <NavLink to="/feed"> Community Feed </NavLink>
+        </div>
 
-      <div className="myprofile">
-        <NavLink to ="/myprofile"> My Profile </NavLink> </div>
-      
-      
-      <nav>  
+        <div className="myprofile">
+          <NavLink to="/myprofile"> My Profile </NavLink>{" "}
+        </div>
 
-        <ul className="login">
-          {!user ? ( 
-            <li>
+        {!user ? (
+          <div className="login">
             <input
-              placeholder="username"
+              placeholder="Username..."
               name="username"
               value={username}
-              onChange={e =>
-                this.changeHandler(e.target.name, e.target.value)
-              }
+              onChange={e => this.changeHandler(e.target.name, e.target.value)}
             />
+
             <input
-              placeholder="password"
+              placeholder="Password..."
               type="password"
               name="password"
               value={password}
-              onChange={e =>
-                this.changeHandler(e.target.name, e.target.value)
-              }
-             />
-            <button id="logobutton" onClick={() => this.login()}>Login</button>
-            </li>
-           ) : (
-            <button onClick={this.logout}>Logout</button>
-            )}
-            {JSON.stringify(this.state.user)}
-        </ul>
-      </nav>
-    </div>
-    
-    )}
+              onChange={e => this.changeHandler(e.target.name, e.target.value)}
+            />
+            <button id="logobutton" onClick={() => this.login()}>
+              Login
+            </button>
+          </div>
+        ) : (
+          <button id="logout" onClick={this.logout}>
+            Logout
+          </button>
+        )}
+      </div>
+    );
+  }
 }
 
 const mapStateToProps = reduxState => {

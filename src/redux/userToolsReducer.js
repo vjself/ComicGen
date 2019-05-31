@@ -1,10 +1,12 @@
 const initialState = {
   panelNumber: 0,
+  titleInput: "",
   balloonInput: "",
   panelBackground: "",
   char: "",
   panels: [],
-  userComic: []
+  userComic: [],
+  userSavedComics: []
 };
 
 const SET_TEXT = "SET_TEXT";
@@ -14,23 +16,29 @@ const SAVE_USER_PANEL = "SAVE_USER_PANEL";
 const SET_PANELS = "SET_PANELS";
 const SET_PANEL_NUMBER = "SET_PANEL_NUMBER";
 const RESET_FIELDS = "RESET_FIELDS";
+const RENDER_COMIC = "RENDER_COMIC";
 const SAVE_USER_COMIC = "SAVE_USER_COMIC";
+const SET_TITLE = "SET_TITLE";
 
 export default function userToolsReducer(state = initialState, action) {
   let { payload } = action;
   switch (action.type) {
     case SET_TEXT:
       return { ...state, balloonInput: payload };
+    case SET_TITLE:
+      return { ...state, titleInput: payload };
     case SET_BG:
       return { ...state, panelBackground: payload };
     case SET_CHAR:
       return { ...state, char: payload };
     case SET_PANEL_NUMBER:
       return { ...state, panelNumber: payload };
-    case SAVE_USER_COMIC:
-      console.log(state.panels);
+    case RENDER_COMIC:
       let comic = [...state.panels];
       return { ...state, userComic: comic };
+    case SAVE_USER_COMIC:
+      console.log(payload);
+      return { ...state, userSavedComics: payload };
     case RESET_FIELDS:
       return {
         ...state,
@@ -107,8 +115,21 @@ export function resetFields() {
     type: RESET_FIELDS
   };
 }
-export function saveUserComic() {
+export function renderComic() {
   return {
-    type: SAVE_USER_COMIC
+    type: RENDER_COMIC
+  };
+}
+
+export function saveUserComic(comic) {
+  return {
+    type: SAVE_USER_COMIC,
+    payload: comic
+  };
+}
+export function setTitle(title) {
+  return {
+    type: SET_TITLE,
+    payload: title
   };
 }
