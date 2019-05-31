@@ -28,6 +28,7 @@ class Register extends Component {
   //         this.props.register(res.data);
   //     });
   // }
+
   register() {
     const loginPayload = {
       email: this.state.email,
@@ -44,6 +45,7 @@ class Register extends Component {
     axios
       .post("/api/register", loginPayload)
       .then(res => {
+        console.log(res.data);
         this.props.register(res.data);
         this.props.history.push("/myprofile");
       })
@@ -70,102 +72,74 @@ class Register extends Component {
     } = this.state;
 
     return (
-      <div>
-          <br/>
-          <br/>
-          <br/>
-          <br/>
-          <br/>
-        <h1>Register</h1>
-
+      <div className="reg-cont">
         <div className="regisForm">
-          <ul>
-            <li className="register">
-              <input
-                placeholder="email"
-                name="email"
-                value={email}
-                onChange={e =>
-                  this.changeHandler(e.target.name, e.target.value)
-                }
-              />
-              <input
-                placeholder="username"
-                name="username"
-                value={username}
-                onChange={e =>
-                  this.changeHandler(e.target.name, e.target.value)
-                }
-              />
-              <input
-                placeholder="password"
-                name="password"
-                value={password}
-                onChange={e =>
-                  this.changeHandler(e.target.name, e.target.value)
-                }
-              />
-              <input
-                placeholder="first name"
-                name="f_name"
-                value={f_name}
-                onChange={e =>
-                  this.changeHandler(e.target.name, e.target.value)
-                }
-              />
-              <input
-                placeholder="last name"
-                name="l_name"
-                value={l_name}
-                onChange={e =>
-                  this.changeHandler(e.target.name, e.target.value)
-                }
-              />
-              <input
-                placeholder="social security #"
-                name="social"
-                value={social}
-                onChange={e =>
-                  this.changeHandler(e.target.name, e.target.value)
-                }
-              />
-              <input
-                placeholder="mother's maiden name"
-                name="mom_m"
-                value={mom_m}
-                onChange={e =>
-                  this.changeHandler(e.target.name, e.target.value)
-                }
-              />
-              <input
-                placeholder="age"
-                name="age"
-                value={age}
-                onChange={e =>
-                  this.changeHandler(e.target.name, e.target.value)
-                }
-              />
-              <input
-                placeholder="gender"
-                name="gender"
-                value={gender}
-                onChange={e =>
-                  this.changeHandler(e.target.name, e.target.value)
-                }
-              />
-              <input
-                placeholder="profile_pic"
-                name="profile_pic"
-                value={profile_pic}
-                onChange={e =>
-                  this.changeHandler(e.target.name, e.target.value)
-                }
-              />
-              <button id="regButton" onClick={this.register}>
-                Register
-              </button>
-            </li>
-          </ul>
+          <h1 id="reg">Register</h1>
+          <div className="register-b">
+            <input
+              placeholder="Email"
+              name="email"
+              value={email}
+              onChange={e => this.changeHandler(e.target.name, e.target.value)}
+            />
+            <input
+              placeholder="Username"
+              name="username"
+              value={username}
+              onChange={e => this.changeHandler(e.target.name, e.target.value)}
+            />
+            <input
+              placeholder="Password"
+              name="password"
+              value={password}
+              onChange={e => this.changeHandler(e.target.name, e.target.value)}
+            />
+            <input
+              placeholder="First"
+              name="f_name"
+              value={f_name}
+              onChange={e => this.changeHandler(e.target.name, e.target.value)}
+            />
+            <input
+              placeholder="Last"
+              name="l_name"
+              value={l_name}
+              onChange={e => this.changeHandler(e.target.name, e.target.value)}
+            />
+            <input
+              placeholder="SS#"
+              name="social"
+              value={social}
+              onChange={e => this.changeHandler(e.target.name, e.target.value)}
+            />
+            <input
+              placeholder="MMN"
+              name="mom_m"
+              value={mom_m}
+              onChange={e => this.changeHandler(e.target.name, e.target.value)}
+            />
+            <input
+              placeholder="Age"
+              name="age"
+              value={age}
+              onChange={e => this.changeHandler(e.target.name, e.target.value)}
+            />
+            <input
+              placeholder="Gender"
+              name="gender"
+              value={gender}
+              onChange={e => this.changeHandler(e.target.name, e.target.value)}
+            />
+            <input
+              placeholder="Profile Pic"
+              name="profile_pic"
+              value={profile_pic}
+              onChange={e => this.changeHandler(e.target.name, e.target.value)}
+            />
+            <button id="regButton" onClick={this.register}>
+              Register
+            </button>
+          </div>
         </div>
       </div>
     );

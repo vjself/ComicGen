@@ -1,7 +1,7 @@
 .comic-container {
   display: flex;
+  background-color: rgba(104, 104, 103, 0.582) !important;
+  margin-left: 200px;
   flex-direction: column;
   align-items: center;
-  background: rgba(0, 195, 255, 0.144);
-  box-shadow: 2px 1px 4px rgba(0, 0, 0, 0.438);
 }

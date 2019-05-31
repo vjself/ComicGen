@@ -1,8 +1,63 @@
-.regisForm{
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    align-content: center;
+.regisForm {
+  display: flex;
+  width: 800px;
+  height: 100%;
+  flex-direction: column;
+  background: rgba(255, 255, 255, 0.788);
 
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.452);
+}
+.register-b {
+  resize: none;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.register-b input::placeholder {
+  color: rgba(82, 192, 255, 0.856) !important;
+}
+
+.register-b input {
+  line-height: 20px;
+  font-size: 18px;
+  color: rgba(45, 98, 158, 0.856) !important;
+  background: transparent;
+  padding: 10px;
+  border: none;
+  border-bottom: 1px solid black;
+}
+
+.register-b button {
+  margin-top: 20px;
+  width: 150px;
+  background: transparent;
+  color: rgba(0, 162, 255, 0.712) !important;
+  text-transform: uppercase;
+  border: 2px solid rgba(0, 162, 255, 0.712) !important;
+  border-radius: 6px;
+  padding: 6px;
+}
+.register-b button:hover {
+  color: rgba(111, 202, 255, 0.884) !important;
+  border-radius: 50px;
+  border-color: rgba(111, 202, 255, 0.884) !important;
+  transition: all 0.3s ease 0s;
+}
+#reg {
+  margin: 80px;
+  border-bottom: 2px solid rgba(0, 0, 0, 0.438);
+  color: rgba(41, 141, 255, 0.747) !important;
+}
+
+.reg-cont {
+  display: flex;
+  padding-top: 30px;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  min-width: 100vw;
+  min-height: 100vh;
+  background: rgba(231, 233, 243, 0.829);
 }

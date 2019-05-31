@@ -17,7 +17,7 @@ import {
   setPanels,
   saveUserPanel,
   resetFields,
-  saveUserComic
+  renderComic
 } from "../../../redux/userToolsReducer";
 import { connect } from "react-redux";
 import "./ToolBox.css";
@@ -114,7 +114,7 @@ class ToolBox extends Component {
           </button>
         </div>
         <div className="save-btn">
-          <button id="c-btn" onClick={this.props.saveUserComic}>
+          <button id="c-btn" onClick={this.props.renderComic}>
             Render Comic
           </button>
         </div>
@@ -142,7 +142,7 @@ const mapDispatchToProps = {
   setPanels,
   saveUserPanel,
   resetFields,
-  saveUserComic
+  renderComic
 };
 
 export default connect(
