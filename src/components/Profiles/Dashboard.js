@@ -35,10 +35,10 @@ export default class Dashboard extends Component{
         const { comic } =this.state;
         return(
             // This will be to conditionally render the user profile or other profiles
-            // <div>
+            // <div> 
             //     {
-            //         ?
-            //         :
+            //         ? (logged in profile)
+            //         : (<h2>not logged in</h2> )
             //     }
             // </div>
 
@@ -80,4 +80,4 @@ export default class Dashboard extends Component{
         )
     }
 
-
+}
