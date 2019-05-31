@@ -1,13 +1,16 @@
 import React, { Component } from "react";
 import "./Dashboard.css";
 import Cloudinary from "../Cloudinary/Cloudinary";
+
 import axios from "axios";
+
 
 //import the user's comic creations
 
 export default class Dashboard extends Component {
   constructor() {
     super();
+
 
     this.state = {
       comics: [],
@@ -47,7 +50,9 @@ export default class Dashboard extends Component {
         <br />
         <br />
 
+
         <h1>Dashboard</h1>
+
 
         {/* This is for all of the user's comics */}
         <div class="Comic-Creations">

@@ -84,6 +84,7 @@ class Header extends Component {
               type="password"
               name="password"
               value={password}
+
               onChange={e => this.changeHandler(e.target.name, e.target.value)}
             />
             <button id="logobutton" onClick={() => this.login()}>
@@ -98,6 +99,7 @@ class Header extends Component {
       </div>
     );
   }
+
 }
 
 const mapStateToProps = reduxState => {
