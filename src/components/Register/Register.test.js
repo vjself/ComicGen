@@ -1,4 +1,5 @@
 const sinon = require('sinon');
+
 const axios = require('axios');
 const testFuncs = require('../Header/testFuncs')
 
@@ -23,8 +24,10 @@ describe('Unit Test', () => {
             )
             return testFuncs.testRegistration('bacon@hungry.com', 'Mike', 12345, 'Porky', 'the pig', 123456789, 'Ms.Porky', 20, 'm', 'prof pic')
         })
+
         afterEach(()=> {
             axios.post.restore()
         })
     })
 })
+
