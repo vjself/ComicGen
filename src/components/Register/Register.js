@@ -2,10 +2,7 @@ import React, { Component } from "react";
 import axios from "axios";
 import { register } from "../../redux/authReducer";
 import "./register.css";
-
-import { connect } from 'react-redux';
-import userToolsReducer from '../../redux/userToolsReducer';
-
+import { connect } from "react-redux";
 
 class Register extends Component {
   constructor(props) {
@@ -44,39 +41,34 @@ class Register extends Component {
       gender: this.state.gender,
       profile_pic: this.state.profile_pic
     };
-    console.log("login payload -->", loginPayload);
     axios
       .post("/api/register", loginPayload)
       .then(res => {
-        console.log("front end reg res --> ", res.data);
         this.props.register(res.data);
-
-
-        console.log("this.props find user: ", this.props);
-        console.log("loginPayload.username: ", loginPayload.username)
-        console.log("loginPayload: ", loginPayload)
-        console.log("ressssss", res)
-        
-        this.props.history.push('/myprofile')  
-    }).catch(err => alert("User exists. Please log in"));
-
-   
-    
-}
-changeHandler = (name, value) => {
-
+        this.props.history.push("/myprofile");
+      })
+      .catch(err => alert("User exists. Please log in"));
+  }
+  changeHandler = (name, value) => {
     this.setState({
       [name]: value
     });
   };
 
 
-
-
-render(){
-    console.log(this.state.email, "Pulling In Email")
-    const { email, username, password, f_name, l_name, social, mom_m, age, gender, profile_pic} = this.state;
-    const { user } = this.props;
+  render() {
+    const {
+      email,
+      username,
+      password,
+      f_name,
+      l_name,
+      social,
+      mom_m,
+      age,
+      gender,
+      profile_pic
+    } = this.state;
 
     return (
       <div>
@@ -88,101 +80,97 @@ render(){
         <h1>Register</h1>
 
         <div className="regisForm">
-            <ul>
-                <li className= "register">
-                   
-                    <input 
-
-                    placeholder = "email"
-                    name = "email"
-                    value={email}
-                    onChange={ e =>
-                    this.changeHandler(e.target.name, e.target.value)
+          <ul>
+            <li className="register">
+              <input
+                placeholder="email"
+                name="email"
+                value={email}
+                onChange={e =>
+                  this.changeHandler(e.target.name, e.target.value)
                 }
-                />
-                    <input
-                    placeholder = "username"
-                    name = "username"
-                    value={username}
-                    onChange={ e =>
-                    this.changeHandler(e.target.name, e.target.value)
+              />
+              <input
+                placeholder="username"
+                name="username"
+                value={username}
+                onChange={e =>
+                  this.changeHandler(e.target.name, e.target.value)
                 }
-                />
-                    <input
-                    placeholder = "password"
-                    name = "password"
-                    value={password}
-                    onChange={ e =>
-                    this.changeHandler(e.target.name, e.target.value)
+              />
+              <input
+                placeholder="password"
+                name="password"
+                value={password}
+                onChange={e =>
+                  this.changeHandler(e.target.name, e.target.value)
                 }
-                />
-                    <input
-                    placeholder = "first name"
-                    name = "f_name"
-                    value={f_name}
-                    onChange={ e =>
-                    this.changeHandler(e.target.name, e.target.value)
+              />
+              <input
+                placeholder="first name"
+                name="f_name"
+                value={f_name}
+                onChange={e =>
+                  this.changeHandler(e.target.name, e.target.value)
                 }
-                />
-                    <input
-                    placeholder = "last name"
-                    name = "l_name"
-                    value={l_name}
-                    onChange={ e =>
-                    this.changeHandler(e.target.name, e.target.value)
+              />
+              <input
+                placeholder="last name"
+                name="l_name"
+                value={l_name}
+                onChange={e =>
+                  this.changeHandler(e.target.name, e.target.value)
                 }
-                />
-                    <input
-                    placeholder = "social security #"
-                    name = "social"
-                    value={social}
-                    onChange={ e =>
-                    this.changeHandler(e.target.name, e.target.value)
+              />
+              <input
+                placeholder="social security #"
+                name="social"
+                value={social}
+                onChange={e =>
+                  this.changeHandler(e.target.name, e.target.value)
                 }
-                />
-                    <input
-                    placeholder = "mother's maiden name"
-                    name = "mom_m"
-                    value={mom_m}
-                    onChange={ e =>
-                    this.changeHandler(e.target.name, e.target.value)
+              />
+              <input
+                placeholder="mother's maiden name"
+                name="mom_m"
+                value={mom_m}
+                onChange={e =>
+                  this.changeHandler(e.target.name, e.target.value)
                 }
-                />
-                    <input
-                    placeholder = "age"
-                    name = "age"
-                    value={age}
-                    onChange={ e =>
-                    this.changeHandler(e.target.name, e.target.value)
+              />
+              <input
+                placeholder="age"
+                name="age"
+                value={age}
+                onChange={e =>
+                  this.changeHandler(e.target.name, e.target.value)
                 }
-                />
-                    <input
-                    placeholder = "gender"
-                    name = "gender"
-                    value={gender}
-                    onChange={ e =>
-                    this.changeHandler(e.target.name, e.target.value)
+              />
+              <input
+                placeholder="gender"
+                name="gender"
+                value={gender}
+                onChange={e =>
+                  this.changeHandler(e.target.name, e.target.value)
                 }
-                />
-                    <input
-                    placeholder = "profile_pic"
-                    name = "profile_pic"
-                    value={profile_pic}
-                    onChange={ e =>
-                    this.changeHandler(e.target.name, e.target.value)
+              />
+              <input
+                placeholder="profile_pic"
+                name="profile_pic"
+                value={profile_pic}
+                onChange={e =>
+                  this.changeHandler(e.target.name, e.target.value)
                 }
-                />
-                <button id="regButton" onClick ={this.register}>Register</button>
-                
-                </li>
-            </ul>
-            </div>
+              />
+              <button id="regButton" onClick={this.register}>
+                Register
+              </button>
+            </li>
+          </ul>
         </div>
-    )
-
-}
-
-
+      </div>
+    );
+  }
 }
 const mapStateToProps = reduxState => {
   return {
@@ -191,9 +179,7 @@ const mapStateToProps = reduxState => {
 };
 
 const mapDispatchToProps = {
-
-    register: register,
-
+  register: register
 };
 
 export default connect(
