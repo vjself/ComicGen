@@ -15,9 +15,11 @@ export default class Dashboard extends Component{
         super(props);
 
         this.state = {
+
            comic:"",
            cloudinaryUrl: [],
            uploaded: '',
+
            edit: false
         };
        this.getOne = this.getOne.bind(this);
@@ -46,6 +48,13 @@ export default class Dashboard extends Component{
     render(){
         const { comic } =this.state;
         return(
+            // This will be to conditionally render the user profile or other profiles
+            // <div>
+            //     {
+            //         ?
+            //         :
+            //     }
+            // </div>
 
             // This is for everything on the dashboard page
             <div class="Dashboard">
@@ -55,6 +64,8 @@ export default class Dashboard extends Component{
                 <br/>
                 <br/>
                 <br/>
+                <br/>
+
                 <h1>Dashboard</h1>
 
                 {/* This is for all of the user's comics */}
