@@ -4,18 +4,22 @@ import './Dashboard.css';
 import Cloudinary from "../Cloudinary/Cloudinary";
 import bodyParser from "body-parser"
 import axios from 'axios';
+import Artist_Comics from '../Artist_Comics/Artist_Comics';
 
 
 //import the user's comic creations
 
 
 export default class Dashboard extends Component{
-    constructor(){
-        super();
+    constructor(props){
+        super(props);
 
         this.state = {
 
-           comics:[],
+           comic:"",
+           cloudinaryUrl: [],
+           uploaded: '',
+
            edit: false
         };
        this.getOne = this.getOne.bind(this);
@@ -24,10 +28,20 @@ export default class Dashboard extends Component{
         this.getOne();
     }
     getOne(){
-        axios.get('/api/dashComics/').then(res => {
+        axios.get("/api/dashComics").then(res => {
             this.setState({
-                comic:res.data
+                comics:res.data
             })
+        })
+    }
+    upload (){
+        const storePayload = {
+            comic: this.state.cloudinaryUrl,
+            id:this.props.users.id
+        }; console.log(this.state.cloudinaryUrl, "CloudinaryUrl")
+        axios.post("/api/comic", storePayload).then(res => {
+            alert("Post Added")
+            this.getOne();
         })
     }
 
@@ -62,12 +76,14 @@ export default class Dashboard extends Component{
                     <h2>Comic Creations</h2>
                     <br/>
                 <Cloudinary />
+                <button onClick={this.upload}>upload</button>
                 </div>
 
                 {/* This is for the comic boxes */}
                 <div class="Comic-Boxes" >        
                     {/* Individual boxes */}
                     <div class="flex-container"> 
+                   <Artist_Comics />
                     Box 1 
                     </div>
                     <div class="flex-container"> 
@@ -80,4 +96,4 @@ export default class Dashboard extends Component{
         )
     }
 
-
+}
