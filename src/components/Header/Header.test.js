@@ -1,17 +1,19 @@
 
-const sinon = require('sinon')
-const testFuncs = require('./testFuncs')
-const axios = require('axios')
+const sinon = require('sinon');
+const axios = require('axios');
+const testFuncs = require ('./testFuncs')
 
 describe('Unit Test', () => {
     describe('Login function', () => {
-        it("Should send username and password", () => {
+        it ('Should send a username and password', () => {
+
             sinon.stub(axios, "post").withArgs(
                 sinon.match({
                     username: expect.any(String),
                     password: expect.any(String)
                 })
             )
+
             return testFuncs.testLogin("1", 1 )
         })
         afterEach(() => {
